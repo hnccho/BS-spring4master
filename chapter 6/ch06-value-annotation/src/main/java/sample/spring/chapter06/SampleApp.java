@@ -8,9 +8,10 @@ import sample.spring.chapter06.beans.Sample;
 
 public class SampleApp {
 	private static Logger logger = Logger.getLogger(SampleApp.class);
+	private static ApplicationContext context;
 
 	public static void main(String args[]) {
-		ApplicationContext context = new ClassPathXmlApplicationContext(
+		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 		Sample sample = context.getBean(Sample.class);
 		logger.info(sample);

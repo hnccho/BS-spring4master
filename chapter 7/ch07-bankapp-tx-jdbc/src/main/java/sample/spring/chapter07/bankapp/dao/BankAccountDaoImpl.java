@@ -36,6 +36,7 @@ public class BankAccountDaoImpl implements BankAccountDao {
 		return key.intValue();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void subtractFromAccount(int bankAccountId, int amount) {
 		int balanceAmount = jdbcTemplate
 				.queryForInt(

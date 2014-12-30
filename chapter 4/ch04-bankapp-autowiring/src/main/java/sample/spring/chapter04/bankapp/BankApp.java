@@ -14,9 +14,10 @@ import sample.spring.chapter04.bankapp.service.FixedDepositService;
 
 public class BankApp {
 	private static Logger logger = Logger.getLogger(BankApp.class);
+	private static ApplicationContext context;
 
 	public static void main(String args[]) throws Exception {
-		ApplicationContext context = new ClassPathXmlApplicationContext(
+		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 
 		logger.info("Beginning with accessing CustomerRequestService (autowire='constructor')");

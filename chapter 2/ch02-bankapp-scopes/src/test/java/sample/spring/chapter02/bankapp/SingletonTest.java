@@ -12,6 +12,7 @@ import sample.spring.chapter02.bankapp.dao.FixedDepositDao;
 
 public class SingletonTest {
 	private static ApplicationContext context;
+	private ApplicationContext anotherContext;
 
 	@BeforeClass
 	public static void init() {
@@ -45,7 +46,7 @@ public class SingletonTest {
 
 	@Test
 	public void testSingletonScope() {
-		ApplicationContext anotherContext = new ClassPathXmlApplicationContext(
+		anotherContext = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 		FixedDepositController fixedDepositController1 = (FixedDepositController) anotherContext
 				.getBean("controller");

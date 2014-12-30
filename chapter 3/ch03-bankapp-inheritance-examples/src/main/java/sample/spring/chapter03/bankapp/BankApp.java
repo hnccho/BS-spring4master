@@ -12,9 +12,10 @@ import sample.spring.chapter03.bankapp.domain.Request;
 
 public class BankApp {
 	private static Logger logger = Logger.getLogger(BankApp.class);
+	private static ApplicationContext context;
 
 	public static void main(String args[]) {
-		ApplicationContext context = new ClassPathXmlApplicationContext(
+		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 
 		FixedDepositController fixedDepositController = context

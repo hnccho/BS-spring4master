@@ -6,8 +6,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import sample.spring.chapter05.bankapp.service.FixedDepositService;
 
 public class BankApp {
+	private static AbstractApplicationContext context;
+
 	public static void main(String args[]) throws Exception {
-		AbstractApplicationContext context = new ClassPathXmlApplicationContext(
+		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 		context.registerShutdownHook();
 		FixedDepositService fixedDepositService = context

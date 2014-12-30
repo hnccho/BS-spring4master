@@ -9,9 +9,10 @@ import sample.spring.chapter03.beans.DataTypesExample;
 
 public class SampleApp {
 	private static Logger logger = Logger.getLogger(SampleApp.class);
+	private static ApplicationContext context;
 
 	public static void main(String args[]) {
-		ApplicationContext context = new ClassPathXmlApplicationContext(
+		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 		BankDetails bankDetails = context.getBean(BankDetails.class);
 		logger.info(bankDetails);

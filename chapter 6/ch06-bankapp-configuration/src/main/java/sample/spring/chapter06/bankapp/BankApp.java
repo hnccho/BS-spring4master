@@ -12,9 +12,10 @@ import sample.spring.chapter06.bankapp.service.FixedDepositService;
 
 public class BankApp {
 	private static Logger logger = Logger.getLogger(BankApp.class);
+	private static AnnotationConfigApplicationContext context;
 
 	public static void main(String args[]) throws Exception {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+		context = new AnnotationConfigApplicationContext(
 				BankAppConfiguration.class);
 
 		logger.info("----------> Beginning with accessing CustomerRegistrationService");
