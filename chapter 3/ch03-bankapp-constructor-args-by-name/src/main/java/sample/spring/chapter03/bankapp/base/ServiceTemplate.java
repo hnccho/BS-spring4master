@@ -5,6 +5,7 @@ import java.beans.ConstructorProperties;
 import org.apache.log4j.Logger;
 
 public class ServiceTemplate {
+	
 	private static Logger logger = Logger.getLogger(ServiceTemplate.class);
 
 	private JmsMessageSender jmsMessageSender;
@@ -15,6 +16,7 @@ public class ServiceTemplate {
 	public ServiceTemplate(JmsMessageSender jmsMessageSender,
 			EmailMessageSender emailMessageSender,
 			WebServiceInvoker webServiceInvoker) {
+		
 		this.jmsMessageSender = jmsMessageSender;
 		this.emailMessageSender = emailMessageSender;
 		this.webServiceInvoker = webServiceInvoker;
@@ -47,4 +49,5 @@ public class ServiceTemplate {
 	public void setWebServiceInvoker(WebServiceInvoker webServiceInvoker) {
 		this.webServiceInvoker = webServiceInvoker;
 	}
+	
 }
