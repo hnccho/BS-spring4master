@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import sample.spring.chapter02.bankapp.domain.FixedDepositDetails;
 
 public class FixedDepositDaoImpl implements FixedDepositDao{
+
 	private static Logger logger = Logger.getLogger(FixedDepositDaoImpl.class);
 	
 	private Map<Long, FixedDepositDetails> fixedDeposits = new HashMap<Long, FixedDepositDetails>();
@@ -24,4 +25,5 @@ public class FixedDepositDaoImpl implements FixedDepositDao{
 		fixedDeposits.put(fdd.getId(), fdd);
 		return true;
 	}
+	
 }
