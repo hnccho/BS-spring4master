@@ -1,7 +1,8 @@
 package sample.spring.chapter01.bankapp;
 
 public class FixedDepositDaoFactory {
-    public FixedDepositDaoFactory() {
+
+	public FixedDepositDaoFactory() {
     }
 	
     public static FixedDepositDao getFixedDepositDao(String daoType) {

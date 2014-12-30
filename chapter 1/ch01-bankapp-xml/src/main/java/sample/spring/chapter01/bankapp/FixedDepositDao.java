@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 @SuppressWarnings("unused")
 public class FixedDepositDao {
+	
 	private static Logger logger = Logger.getLogger(FixedDepositDao.class);
 	private String url;
 	private String driverClass;

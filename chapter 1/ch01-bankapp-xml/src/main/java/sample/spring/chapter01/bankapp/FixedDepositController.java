@@ -3,8 +3,7 @@ package sample.spring.chapter01.bankapp;
 import org.apache.log4j.Logger;
 
 public class FixedDepositController {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositController.class);
+	private static Logger logger = Logger.getLogger(FixedDepositController.class);
 
 	private FixedDepositService fixedDepositService;
 
@@ -25,4 +24,5 @@ public class FixedDepositController {
 	public FixedDepositDetails get() {
 		return fixedDepositService.getFixedDepositDetails(1L);
 	}
+	
 }

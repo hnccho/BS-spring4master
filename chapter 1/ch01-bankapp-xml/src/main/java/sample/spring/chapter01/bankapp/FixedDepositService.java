@@ -22,4 +22,5 @@ public class FixedDepositService {
 	public boolean createFixedDeposit(FixedDepositDetails fdd) {
 		return fixedDepositDao.createFixedDeposit(fdd);
 	}
+	
 }

@@ -6,8 +6,7 @@ public class FixedDepositDetails {
 	private int tenure;
 	private String email;
 
-	public FixedDepositDetails(long id, float depositAmount, int tenure,
-			String email) {
+	public FixedDepositDetails(long id, float depositAmount, int tenure, String email) {
 		this.id = id;
 		this.depositAmount = depositAmount;
 		this.tenure = tenure;
