@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Entity(name = "BankAccountDetails")
 @Table(name = "bank_account_details")
 public class BankAccountDetails {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "account_id")
@@ -56,4 +57,5 @@ public class BankAccountDetails {
 			return false;
 		}
 	}
+	
 }

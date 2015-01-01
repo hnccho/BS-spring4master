@@ -8,6 +8,7 @@ import sample.spring.chapter07.bankapp.domain.BankAccountDetails;
 
 @Repository(value = "bankAccountDao")
 public class BankAccountDaoImpl implements BankAccountDao {
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -19,12 +20,12 @@ public class BankAccountDaoImpl implements BankAccountDao {
 
 	@Override
 	public void subtractFromAccount(int bankAccountId, int amount) {
-		String hql = "from BankAccountDetails as bankAccountDetails where bankAccountDetails.accountId ="
-				+ bankAccountId;
-		BankAccountDetails bankAccountDetails = (BankAccountDetails) sessionFactory
-				.getCurrentSession().createQuery(hql).uniqueResult();
-		bankAccountDetails.setBalanceAmount(bankAccountDetails
-				.getBalanceAmount() - amount);
+		String hql = "from BankAccountDetails as bankAccountDetails "
+				   + "where bankAccountDetails.accountId =" + bankAccountId;
+		BankAccountDetails bankAccountDetails = 
+				(BankAccountDetails) sessionFactory.getCurrentSession().createQuery(hql).uniqueResult();
+		bankAccountDetails.setBalanceAmount(bankAccountDetails.getBalanceAmount() - amount);
 		sessionFactory.getCurrentSession().merge(bankAccountDetails);
 	}
+	
 }

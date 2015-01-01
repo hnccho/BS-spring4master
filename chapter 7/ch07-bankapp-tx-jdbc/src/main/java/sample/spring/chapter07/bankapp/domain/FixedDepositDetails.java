@@ -3,6 +3,7 @@ package sample.spring.chapter07.bankapp.domain;
 import java.util.Date;
 
 public class FixedDepositDetails {
+	
 	private int fixedDepositId;
 	private int bankAccountId;
 	private Date fdCreationDate;
@@ -65,4 +66,5 @@ public class FixedDepositDetails {
 				+ fdCreationDate + ", fdAmount=" + fdAmount + ", tenure="
 				+ tenure + ", active=" + active + "]";
 	}
+	
 }

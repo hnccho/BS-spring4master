@@ -101,4 +101,5 @@ public class FixedDepositDetails {
 			return false;
 		}
 	}
+	
 }

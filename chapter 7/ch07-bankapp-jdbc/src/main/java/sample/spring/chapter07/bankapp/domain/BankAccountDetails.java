@@ -3,6 +3,7 @@ package sample.spring.chapter07.bankapp.domain;
 import java.util.Date;
 
 public class BankAccountDetails {
+	
 	private int accountId;
 	private int balanceAmount;
 	private Date lastTransactionTimestamp;
@@ -30,4 +31,5 @@ public class BankAccountDetails {
 	public void setLastTransactionTimestamp(Date lastTransactionTimestamp) {
 		this.lastTransactionTimestamp = lastTransactionTimestamp;
 	}
+	
 }

@@ -25,25 +25,22 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 	private BankAccountDao bankAccountDao;
 
 	@Override
-	public int createFixedDeposit(final FixedDepositDetails fdd)
-			throws Exception {
+	public int createFixedDeposit(final FixedDepositDetails fdd) throws Exception {
 		// -- create fixed deposit
-		transactionTemplate
-				.execute(new TransactionCallback<FixedDepositDetails>() {
+		transactionTemplate.execute(new TransactionCallback<FixedDepositDetails>() {
 
-					@Override
-					public FixedDepositDetails doInTransaction(
-							TransactionStatus status) {
-						try {
-							myFixedDepositDao.createFixedDeposit(fdd);
-							bankAccountDao.subtractFromAccount(
-									fdd.getBankAccountId(), fdd.getFdAmount());
-						} catch (Exception e) {
-							status.setRollbackOnly();
-						}
-						return fdd;
-					}
-				});
+			@Override
+			public FixedDepositDetails doInTransaction(TransactionStatus status) {
+				try {
+					myFixedDepositDao.createFixedDeposit(fdd);
+					bankAccountDao.subtractFromAccount(fdd.getBankAccountId(), fdd.getFdAmount());
+				} catch (Exception e) {
+					status.setRollbackOnly();
+				}
+				return fdd;
+			}
+					
+		});
 		return fdd.getFixedDepositId();
 	}
 
@@ -51,4 +48,5 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 	public FixedDepositDetails getFixedDeposit(int fixedDepositId) {
 		return myFixedDepositDao.getFixedDeposit(fixedDepositId);
 	}
+	
 }

@@ -31,4 +31,5 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 	public FixedDepositDetails getFixedDeposit(int fixedDepositId) {
 		return myFixedDepositDao.getFixedDeposit(fixedDepositId);
 	}
+	
 }

@@ -35,30 +35,27 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 
 			@Override
-			public PreparedStatement createPreparedStatement(Connection con)
-					throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql,
-						new String[] { "fixed_deposit_id" });
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				
+				PreparedStatement ps = con.prepareStatement(sql, new String[] { "fixed_deposit_id" });
 				ps.setInt(1, fdd.getBankAccountId());
-				ps.setDate(2, new java.sql.Date(fdd.getFdCreationDate()
-						.getTime()));
+				ps.setDate(2, new java.sql.Date(fdd.getFdCreationDate().getTime()));
 				ps.setInt(3, fdd.getFdAmount());
 				ps.setInt(4, fdd.getTenure());
 				ps.setString(5, fdd.getActive());
 				return ps;
 			}
+			
 		}, keyHolder);
 		return keyHolder.getKey().intValue();
 	}
 
 	public FixedDepositDetails getFixedDeposit(final int fixedDepositId) {
 		final String sql = "select * from fixed_deposit_details where fixed_deposit_id = :fixedDepositId";
-		SqlParameterSource namedParameters = new MapSqlParameterSource(
-				"fixedDepositId", fixedDepositId);
+		SqlParameterSource namedParameters = new MapSqlParameterSource("fixedDepositId", fixedDepositId);
 		return namedParameterJdbcTemplate.queryForObject(sql, namedParameters,
 				new RowMapper<FixedDepositDetails>() {
-					public FixedDepositDetails mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
+					public FixedDepositDetails mapRow(ResultSet rs, int rowNum)	throws SQLException {
 						FixedDepositDetails fdd = new FixedDepositDetails();
 						fdd.setActive(rs.getString("active"));
 						fdd.setBankAccountId(rs.getInt("account_id"));

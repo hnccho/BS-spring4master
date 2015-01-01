@@ -12,6 +12,7 @@ import sample.spring.chapter07.bankapp.service.BankAccountService;
 import sample.spring.chapter07.bankapp.service.FixedDepositService;
 
 public class BankApp {
+	
 	private static Logger logger = Logger.getLogger(BankApp.class);
 	private static ApplicationContext context;
 
@@ -19,19 +20,16 @@ public class BankApp {
 		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 
-		BankAccountService bankAccountService = context
-				.getBean(BankAccountService.class);
+		BankAccountService bankAccountService = context.getBean(BankAccountService.class);
 		BankAccountDetails bankAccountDetails = new BankAccountDetails();
 		bankAccountDetails.setBalanceAmount(1000);
 		bankAccountDetails.setLastTransactionTimestamp(new Date());
 
-		int bankAccountId = bankAccountService
-				.createBankAccount(bankAccountDetails);
+		int bankAccountId = bankAccountService.createBankAccount(bankAccountDetails);
 
 		logger.info("Created bank account with id - " + bankAccountId);
 
-		FixedDepositService fixedDepositService = context
-				.getBean(FixedDepositService.class);
+		FixedDepositService fixedDepositService = context.getBean(FixedDepositService.class);
 
 		FixedDepositDetails fdd = new FixedDepositDetails();
 		fdd.setActive("Y");
@@ -44,4 +42,5 @@ public class BankApp {
 
 		logger.info(fixedDepositService.getFixedDeposit(fixedDepositId));
 	}
+	
 }
