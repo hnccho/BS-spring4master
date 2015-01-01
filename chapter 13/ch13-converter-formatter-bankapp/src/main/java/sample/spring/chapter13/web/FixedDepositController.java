@@ -21,8 +21,8 @@ import sample.spring.chapter13.service.FixedDepositService;
 @Controller
 @RequestMapping(value = "/fixedDeposit")
 public class FixedDepositController {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositController.class);
+	
+	private static Logger logger = Logger.getLogger(FixedDepositController.class);
 
 	@Autowired
 	private FixedDepositService fixedDepositService;
@@ -34,7 +34,6 @@ public class FixedDepositController {
 		modelData.put("currentLocale", LocaleContextHolder.getLocale());
 		return new ModelAndView("fixedDepositList", modelData);
 	}
-
 
 	@ModelAttribute(value = "newFixedDepositDetails")
 	public FixedDepositDetails getNewFixedDepositDetails() {
@@ -103,4 +102,5 @@ public class FixedDepositController {
 		logger.info("viewFixedDepositDetails() method: Fixed deposit details loaded from data store. Showing form for editing the loaded fixed deposit.");
 		return new ModelAndView("editFixedDepositForm", modelMap);
 	}
+	
 }

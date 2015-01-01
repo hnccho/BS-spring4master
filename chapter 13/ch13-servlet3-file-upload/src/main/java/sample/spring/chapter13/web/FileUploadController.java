@@ -22,6 +22,7 @@ public class FileUploadController {
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
 	public ModelAndView handleFileUpload(
 			@RequestParam("myFileField") MultipartFile file) throws IOException {
+
 		ModelMap modelData = new ModelMap();
 		
 		if (!file.isEmpty()) {
@@ -42,4 +43,5 @@ public class FileUploadController {
 		modelData.put("uploadMessage", failureMessage);
 		return new ModelAndView("uploadForm", modelData);
 	}
+	
 }

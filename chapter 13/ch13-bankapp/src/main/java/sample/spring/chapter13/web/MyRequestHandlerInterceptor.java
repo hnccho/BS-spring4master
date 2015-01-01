@@ -10,11 +10,13 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 public class MyRequestHandlerInterceptor implements HandlerInterceptor {
+	
 	private static Logger logger = Logger.getLogger(MyRequestHandlerInterceptor.class);
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
+	
 		logger.info("HTTP method --> " + request.getMethod());
 		Enumeration<String> requestNames = request.getParameterNames();
 		while (requestNames.hasMoreElements()) {

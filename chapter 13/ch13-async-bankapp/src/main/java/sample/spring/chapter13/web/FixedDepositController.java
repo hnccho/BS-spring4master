@@ -39,6 +39,7 @@ public class FixedDepositController {
 				modelData.put("fdList", fixedDepositService.getFixedDeposits());
 				return new ModelAndView("fixedDepositList", modelData);
 			}
+			
 		};
 	}
 
@@ -55,12 +56,14 @@ public class FixedDepositController {
 				modelData.addAttribute(fixedDepositDetails);
 				return new ModelAndView("createFixedDepositForm", modelData);
 			}
+			
 		};
 	}
 
 	@RequestMapping(params = "fdAction=create", method = RequestMethod.POST)
 	public Callable<ModelAndView> openFixedDeposit(
 			final @RequestParam Map<String, String> params) {
+		
 		return new Callable<ModelAndView>() {
 
 			@Override
@@ -73,8 +76,7 @@ public class FixedDepositController {
 				Map<String, Object> modelData = new HashMap<String, Object>();
 
 				if (!NumberUtils.isNumber(depositAmount)) {
-					modelData
-							.put("error.depositAmount", "enter a valid number");
+					modelData.put("error.depositAmount", "enter a valid number");
 				} else if (NumberUtils.toInt(depositAmount) < 1000) {
 					modelData.put("error.depositAmount",
 							"must be greater than or equal to 1000");
@@ -99,8 +101,7 @@ public class FixedDepositController {
 				fixedDepositDetails.setEmail(email);
 				fixedDepositDetails.setTenure(tenure);
 
-				if (modelData.size() > 0) { // --this means there are validation
-											// errors
+				if (modelData.size() > 0) { // --this means there are validation errors
 					modelData.put("fixedDepositDetails", fixedDepositDetails);
 					return new ModelAndView("createFixedDepositForm", modelData);
 				} else {
@@ -114,10 +115,12 @@ public class FixedDepositController {
 	@RequestMapping(params = "fdAction=edit", method = RequestMethod.POST)
 	public Callable<ModelAndView> editFixedDeposit(
 			final @RequestParam MultiValueMap<String, String> params) {
+		
 		return new Callable<ModelAndView>() {
 
 			@Override
 			public ModelAndView call() throws Exception {
+				
 				Thread.sleep(5000);
 				String depositAmount = params.get("depositAmount").get(0);
 				String tenure = params.get("tenure").get(0);
@@ -127,8 +130,7 @@ public class FixedDepositController {
 				Map<String, Object> modelData = new HashMap<String, Object>();
 
 				if (!NumberUtils.isNumber(depositAmount)) {
-					modelData
-							.put("error.depositAmount", "enter a valid number");
+					modelData.put("error.depositAmount", "enter a valid number");
 				} else if (NumberUtils.toInt(depositAmount) < 1000) {
 					modelData.put("error.depositAmount",
 							"must be greater than or equal to 1000");
@@ -154,8 +156,7 @@ public class FixedDepositController {
 				fixedDepositDetails.setEmail(email);
 				fixedDepositDetails.setTenure(tenure);
 
-				if (modelData.size() > 0) { // --this means there are validation
-											// errors
+				if (modelData.size() > 0) { // --this means there are validation errors
 					modelData.put("fixedDepositDetails", fixedDepositDetails);
 					return new ModelAndView("editFixedDepositForm", modelData);
 				} else {
@@ -169,6 +170,7 @@ public class FixedDepositController {
 	@RequestMapping(params = "fdAction=close", method = RequestMethod.GET)
 	public Callable<String> closeFixedDeposit(
 			final @RequestParam(value = "fixedDepositId") int fdId) {
+
 		return new Callable<String>() {
 
 			@Override
@@ -177,20 +179,22 @@ public class FixedDepositController {
 				fixedDepositService.closeFixedDeposit(fdId);
 				return "redirect:/fixedDeposit/list";
 			}
+			
 		};
 	}
 
 	@RequestMapping(params = "fdAction=view", method = RequestMethod.GET)
 	public Callable<ModelAndView> viewFixedDepositDetails(
 			final HttpServletRequest request) {
+		
 		return new Callable<ModelAndView>() {
 
 			@Override
 			public ModelAndView call() throws Exception {
 				Thread.sleep(5000);
-				FixedDepositDetails fixedDepositDetails = fixedDepositService
-						.getFixedDeposit(Integer.parseInt(request
-								.getParameter("fixedDepositId")));
+				FixedDepositDetails fixedDepositDetails 
+					= fixedDepositService.getFixedDeposit(
+							Integer.parseInt(request.getParameter("fixedDepositId")));
 				ModelMap modelMap = new ModelMap();
 				modelMap.addAttribute(fixedDepositDetails);
 				return new ModelAndView("editFixedDepositForm", modelMap);
@@ -202,4 +206,5 @@ public class FixedDepositController {
 	public String handleException(Exception ex) {
 		return "error";
 	}
+	
 }

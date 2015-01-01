@@ -22,4 +22,5 @@ public class AmountFormatAnnotationFormatterFactory implements AnnotationFormatt
 	public Printer<?> getPrinter(AmountFormat annotation, Class<?> fieldType) {
 		return new AmountFormatter();
 	}
+	
 }

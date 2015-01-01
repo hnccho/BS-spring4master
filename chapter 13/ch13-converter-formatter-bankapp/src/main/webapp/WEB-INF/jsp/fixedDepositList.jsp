@@ -57,27 +57,21 @@
 									<c:forEach items="${fdList}" var="fixedDeposit">
 										<tr>
 											<td class="td"><spring:eval expression="fixedDeposit.id" /></td>
-											<td class="td"><spring:eval
-													expression="fixedDeposit.depositAmount" /></td>
-											<td class="td"><spring:eval
-													expression="fixedDeposit.tenure" /></td>
-											<td class="td"><spring:eval
-													expression="fixedDeposit.email" /></td>
+											<td class="td"><spring:eval	expression="fixedDeposit.depositAmount" /></td>
+											<td class="td"><spring:eval	expression="fixedDeposit.tenure" /></td>
+											<td class="td"><spring:eval	expression="fixedDeposit.email" /></td>
 											<td class="td"><a
 												href="${pageContext.request.contextPath}/fixedDeposit?fdAction=close&fixedDepositId=${fixedDeposit.id}"
-												style="color: green"><spring:message
-														code="fd.close.title" /></a> <a
+												style="color: green"><spring:message code="fd.close.title" /></a> <a
 												href="${pageContext.request.contextPath}/fixedDeposit?fdAction=view&fixedDepositId=${fixedDeposit.id}"
-												style="color: green"><spring:message
-														code="fd.edit.title" /></a></td>
+												style="color: green"><spring:message code="fd.edit.title" /></a></td>
 										</tr>
 									</c:forEach>
 								</table>
 							</td>
 						</tr>
 						<tr align="center">
-							<td><input type="submit"
-								value="<spring:message code="fd.createNewFd.button" />" /></td>
+							<td><input type="submit" value="<spring:message code="fd.createNewFd.button" />" /></td>
 						</tr>
 					</table>
 				</td>

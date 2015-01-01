@@ -6,6 +6,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 import org.springframework.web.context.request.async.DeferredResultProcessingInterceptor;
 
 public class MyDeferredResultInterceptor implements DeferredResultProcessingInterceptor {
+
 	private static Logger logger = Logger.getLogger(MyDeferredResultInterceptor.class);
 	
 	@Override
@@ -39,4 +40,5 @@ public class MyDeferredResultInterceptor implements DeferredResultProcessingInte
 			DeferredResult<T> deferredResult) throws Exception {
 		logger.info("afterCompletion");	
 	}
+
 }

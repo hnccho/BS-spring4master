@@ -21,4 +21,5 @@ public class AmountFormatter implements Formatter<Long>{
 		String str[] = text.split(" ");
 		return Long.parseLong(str[0]);
 	}
+	
 }

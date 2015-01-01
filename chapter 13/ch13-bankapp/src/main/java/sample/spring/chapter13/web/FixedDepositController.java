@@ -143,9 +143,9 @@ public class FixedDepositController {
 
 	@RequestMapping(params = "fdAction=view", method = RequestMethod.GET)
 	public ModelAndView viewFixedDepositDetails(HttpServletRequest request) {
-		FixedDepositDetails fixedDepositDetails = fixedDepositService
-				.getFixedDeposit(Integer.parseInt(request
-						.getParameter("fixedDepositId")));
+		FixedDepositDetails fixedDepositDetails 
+			= fixedDepositService.getFixedDeposit(
+					Integer.parseInt(request.getParameter("fixedDepositId")));
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute(fixedDepositDetails);
 		return new ModelAndView("editFixedDepositForm", modelMap);

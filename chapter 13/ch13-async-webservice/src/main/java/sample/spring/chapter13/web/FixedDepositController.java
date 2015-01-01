@@ -30,8 +30,8 @@ import sample.spring.chapter13.service.FixedDepositService;
 @Controller
 @RequestMapping(value = "/fixedDeposits")
 public class FixedDepositController {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositController.class);
+	
+	private static Logger logger = Logger.getLogger(FixedDepositController.class);
 
 	private static final String LIST_METHOD = "getFixedDepositList";
 	private static final String GET_FD_METHOD = "getFixedDeposit";
@@ -47,11 +47,15 @@ public class FixedDepositController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public DeferredResult<ResponseEntity<List<FixedDepositDetails>>> getFixedDepositList() {
+		
 		logger.info("listFixedDeposits() method: Getting list of fixed deposits");
 
-		DeferredResult<ResponseEntity<List<FixedDepositDetails>>> dr = new DeferredResult<ResponseEntity<List<FixedDepositDetails>>>();
+		DeferredResult<ResponseEntity<List<FixedDepositDetails>>> dr 
+			= new DeferredResult<ResponseEntity<List<FixedDepositDetails>>>();
 
-		ResultContext<ResponseEntity<List<FixedDepositDetails>>> resultContext = new ResultContext<ResponseEntity<List<FixedDepositDetails>>>();
+		ResultContext<ResponseEntity<List<FixedDepositDetails>>> resultContext 
+			= new ResultContext<ResponseEntity<List<FixedDepositDetails>>>();
+		
 		resultContext.setDeferredResult(dr);
 		resultContext.setMethodToInvoke(LIST_METHOD);
 		resultContext.setArgs(new HashMap<String, Object>());
@@ -63,12 +67,15 @@ public class FixedDepositController {
 	@RequestMapping(method = RequestMethod.GET, params = "id")
 	public DeferredResult<ResponseEntity<FixedDepositDetails>> getFixedDeposit(
 			@RequestParam("id") int id) {
-		logger.info("getFixedDeposit() method: Getting fixed deposit with id "
-				+ id);
+		
+		logger.info("getFixedDeposit() method: Getting fixed deposit with id " + id);
 
-		DeferredResult<ResponseEntity<FixedDepositDetails>> dr = new DeferredResult<ResponseEntity<FixedDepositDetails>>();
+		DeferredResult<ResponseEntity<FixedDepositDetails>> dr 
+			= new DeferredResult<ResponseEntity<FixedDepositDetails>>();
 
-		ResultContext<ResponseEntity<FixedDepositDetails>> resultContext = new ResultContext<ResponseEntity<FixedDepositDetails>>();
+		ResultContext<ResponseEntity<FixedDepositDetails>> resultContext 
+			= new ResultContext<ResponseEntity<FixedDepositDetails>>();
+		
 		resultContext.setDeferredResult(dr);
 		resultContext.setMethodToInvoke(GET_FD_METHOD);
 		Map<String, Object> args = new HashMap<String, Object>();
@@ -84,9 +91,12 @@ public class FixedDepositController {
 			@RequestBody FixedDepositDetails fixedDepositDetails,
 			BindingResult bindingResult) {
 
-		DeferredResult<ResponseEntity<FixedDepositDetails>> dr = new DeferredResult<ResponseEntity<FixedDepositDetails>>();
+		DeferredResult<ResponseEntity<FixedDepositDetails>> dr 
+			= new DeferredResult<ResponseEntity<FixedDepositDetails>>();
 
-		ResultContext<ResponseEntity<FixedDepositDetails>> resultContext = new ResultContext<ResponseEntity<FixedDepositDetails>>();
+		ResultContext<ResponseEntity<FixedDepositDetails>> resultContext 
+			= new ResultContext<ResponseEntity<FixedDepositDetails>>();
+		
 		resultContext.setDeferredResult(dr);
 		resultContext.setMethodToInvoke(OPEN_FD_METHOD);
 		Map<String, Object> args = new HashMap<String, Object>();
@@ -101,11 +111,15 @@ public class FixedDepositController {
 	@RequestMapping(method = RequestMethod.PUT)
 	public DeferredResult<ResponseEntity<FixedDepositDetails>> editFixedDeposit(
 			@RequestBody FixedDepositDetails fixedDepositDetails,
-			@RequestParam("id") int fixedDepositId, BindingResult bindingResult) {
+			@RequestParam("id") int fixedDepositId, 
+			BindingResult bindingResult) {
 
-		DeferredResult<ResponseEntity<FixedDepositDetails>> dr = new DeferredResult<ResponseEntity<FixedDepositDetails>>();
+		DeferredResult<ResponseEntity<FixedDepositDetails>>	dr 
+			= new DeferredResult<ResponseEntity<FixedDepositDetails>>();
 
-		ResultContext<ResponseEntity<FixedDepositDetails>> resultContext = new ResultContext<ResponseEntity<FixedDepositDetails>>();
+		ResultContext<ResponseEntity<FixedDepositDetails>> resultContext 
+			= new ResultContext<ResponseEntity<FixedDepositDetails>>();
+		
 		resultContext.setDeferredResult(dr);
 		resultContext.setMethodToInvoke(EDIT_FD_METHOD);
 		Map<String, Object> args = new HashMap<String, Object>();
@@ -156,70 +170,56 @@ public class FixedDepositController {
 								HttpStatus.OK));
 			}
 			if (resultContext.getMethodToInvoke() == GET_FD_METHOD) {
-				int fixedDepositId = (Integer) resultContext.getArgs().get(
-						"fixedDepositId");
+				int fixedDepositId = (Integer) resultContext.getArgs().get("fixedDepositId");
 				resultContext.getDeferredResult().setResult(
 						new ResponseEntity<FixedDepositDetails>(
-								fixedDepositService
-										.getFixedDeposit(fixedDepositId),
+								fixedDepositService.getFixedDeposit(fixedDepositId),
 								HttpStatus.OK));
 			}
 
 			if (resultContext.getMethodToInvoke() == OPEN_FD_METHOD) {
-				FixedDepositDetails fixedDepositDetails = (FixedDepositDetails) resultContext
-						.getArgs().get("fixedDepositDetails");
-				BindingResult bindingResult = (BindingResult) resultContext
-						.getArgs().get("bindingResult");
+				FixedDepositDetails fixedDepositDetails 
+					= (FixedDepositDetails) resultContext.getArgs().get("fixedDepositDetails");
+				BindingResult bindingResult 
+					= (BindingResult) resultContext.getArgs().get("bindingResult");
 
-				new FixedDepositDetailsValidator().validate(
-						fixedDepositDetails, bindingResult);
-
+				new FixedDepositDetailsValidator().validate(fixedDepositDetails, bindingResult);
 				if (bindingResult.hasErrors()) {
 					logger.info("openFixedDeposit() method: Validation errors occurred");
 					resultContext.getDeferredResult().setErrorResult(
-							new ValidationException(
-									"Validation errors occurred"));
+							new ValidationException("Validation errors occurred"));
 				} else {
 					fixedDepositService.saveFixedDeposit(fixedDepositDetails);
 					resultContext.getDeferredResult().setResult(
-							new ResponseEntity<FixedDepositDetails>(
-									fixedDepositDetails, HttpStatus.CREATED));
+							new ResponseEntity<FixedDepositDetails>(fixedDepositDetails, HttpStatus.CREATED));
 					logger.info("openFixedDeposit() method: Fixed deposit details successfully saved.");
 				}
 			}
 			if (resultContext.getMethodToInvoke() == EDIT_FD_METHOD) {
-				FixedDepositDetails fixedDepositDetails = (FixedDepositDetails) resultContext
-						.getArgs().get("fixedDepositDetails");
-				int fixedDepositId = (Integer) resultContext.getArgs().get(
-						"fixedDepositId");
-				BindingResult bindingResult = (BindingResult) resultContext
-						.getArgs().get("bindingResult");
+				FixedDepositDetails fixedDepositDetails 
+					= (FixedDepositDetails) resultContext.getArgs().get("fixedDepositDetails");
+				int fixedDepositId = (Integer) resultContext.getArgs().get("fixedDepositId");
+				BindingResult bindingResult = (BindingResult) resultContext.getArgs().get("bindingResult");
 
 				fixedDepositDetails.setId(fixedDepositId);
-				new FixedDepositDetailsValidator().validate(
-						fixedDepositDetails, bindingResult);
-
+				new FixedDepositDetailsValidator().validate(fixedDepositDetails, bindingResult);
 				if (bindingResult.hasErrors()) {
 					logger.info("editFixedDeposit() method: Validation errors occurred");
 					resultContext.getDeferredResult().setResult(
-							new ValidationException(
-									"Validation errors occurred"));
+							new ValidationException("Validation errors occurred"));
 				} else {
 					fixedDepositService.editFixedDeposit(fixedDepositDetails);
 					logger.info("editFixedDeposit() method: Fixed deposit details successfully changed.");
 					resultContext.getDeferredResult().setResult(
-							new ResponseEntity<FixedDepositDetails>(
-									fixedDepositDetails, HttpStatus.OK));
+							new ResponseEntity<FixedDepositDetails>(fixedDepositDetails, HttpStatus.OK));
 				}
 			}
 			if (resultContext.getMethodToInvoke() == CLOSE_FD_METHOD) {
-				int fixedDepositId = (Integer) resultContext.getArgs().get(
-						"fixedDepositId");
+				int fixedDepositId = (Integer) resultContext.getArgs().get("fixedDepositId");
 				fixedDepositService.closeFixedDeposit(fixedDepositId);
 				logger.info("closeFixedDeposit() method: Fixed deposit successfully closed.");
 				resultContext.getDeferredResult().setResult(
-						new HttpEntity<String>(
-								"Successfully deleted the fixed deposit"));
+						new HttpEntity<String>("Successfully deleted the fixed deposit"));
 			}
 			deferredResultQueue.remove(resultContext);
 		}

@@ -3,6 +3,7 @@ package sample.spring.chapter13.domain;
 import java.util.List;
 
 public class FixedDeposits {
+	
 	private List<FixedDepositDetails> fdList;
 
 	public List<FixedDepositDetails> getFdList() {
@@ -12,4 +13,5 @@ public class FixedDeposits {
 	public void setFdList(List<FixedDepositDetails> fdList) {
 		this.fdList = fdList;
 	}
+	
 }

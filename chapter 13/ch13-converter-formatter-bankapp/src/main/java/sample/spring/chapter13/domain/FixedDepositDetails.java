@@ -2,10 +2,9 @@ package sample.spring.chapter13.domain;
 
 import sample.spring.chapter13.formatter.AmountFormat;
 
-
 public class FixedDepositDetails {
+	
 	private long id;
-
 	@AmountFormat
 	private long depositAmount;
 	@AmountFormat
@@ -16,8 +15,7 @@ public class FixedDepositDetails {
 	public FixedDepositDetails() {
 	}
 
-	public FixedDepositDetails(long id, long depositAmount, String tenure,
-			String email) {
+	public FixedDepositDetails(long id, long depositAmount, String tenure, String email) {
 		this.id = id;
 		this.depositAmount = depositAmount;
 		this.tenure = tenure;
@@ -60,4 +58,5 @@ public class FixedDepositDetails {
 		return "id :" + id + ", deposit amount : " + depositAmount
 				+ ", tenure : " + tenure + ", email : " + email;
 	}
+	
 }

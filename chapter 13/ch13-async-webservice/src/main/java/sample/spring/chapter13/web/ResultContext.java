@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.web.context.request.async.DeferredResult;
 
 public class ResultContext<T> {
+	
 	private String methodToInvoke;
 	private DeferredResult<T> deferredResult;
 	private Map<String, Object> args;
@@ -27,4 +28,5 @@ public class ResultContext<T> {
 	public void setArgs(Map<String, Object> args) {
 		this.args = args;
 	}
+	
 }

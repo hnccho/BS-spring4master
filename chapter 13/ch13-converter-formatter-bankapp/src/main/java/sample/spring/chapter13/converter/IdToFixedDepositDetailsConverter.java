@@ -6,8 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import sample.spring.chapter13.domain.FixedDepositDetails;
 import sample.spring.chapter13.service.FixedDepositService;
 
-public class IdToFixedDepositDetailsConverter implements
-		Converter<String, FixedDepositDetails> {
+public class IdToFixedDepositDetailsConverter implements Converter<String, FixedDepositDetails> {
 
 	@Autowired
 	private FixedDepositService fixedDepositService;
@@ -16,4 +15,5 @@ public class IdToFixedDepositDetailsConverter implements
 	public FixedDepositDetails convert(String source) {
 		return fixedDepositService.getFixedDeposit(Integer.parseInt(source));
 	}
+	
 }

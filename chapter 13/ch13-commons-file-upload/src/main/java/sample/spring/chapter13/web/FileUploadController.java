@@ -22,8 +22,8 @@ public class FileUploadController {
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
 	public ModelAndView handleFileUpload(
 			@RequestParam("myFileField") MultipartFile file) throws IOException {
+		
 		ModelMap modelData = new ModelMap();
-
 		if (!file.isEmpty()) {
 			// -- save the uploaded file on the filesystem
 			String successMessage = "File successfully uploaded";
@@ -37,9 +37,11 @@ public class FileUploadController {
 	
 	@ExceptionHandler(value = Exception.class)
 	public ModelAndView handleException() {
+
 		ModelMap modelData = new ModelMap();
 		String failureMessage = "Exception occurred during upload.";
 		modelData.put("uploadMessage", failureMessage);
 		return new ModelAndView("uploadForm", modelData);
 	}
+	
 }
