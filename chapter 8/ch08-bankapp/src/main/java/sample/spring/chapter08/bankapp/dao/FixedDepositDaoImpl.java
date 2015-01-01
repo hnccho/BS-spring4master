@@ -36,31 +36,28 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 
 			@Override
-			public PreparedStatement createPreparedStatement(Connection con)
-					throws SQLException {
-				PreparedStatement ps = con.prepareStatement(sql,
-						new String[] { "fixed_deposit_id" });
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement ps = con.prepareStatement(sql, new String[] { "fixed_deposit_id" });
 				ps.setInt(1, fdd.getBankAccountId());
-				ps.setDate(2, new java.sql.Date(fdd.getFdCreationDate()
-						.getTime()));
+				ps.setDate(2, new java.sql.Date(fdd.getFdCreationDate().getTime()));
 				ps.setInt(3, fdd.getFdAmount());
 				ps.setInt(4, fdd.getTenure());
 				ps.setString(5, fdd.getActive());
 				ps.setString(6, fdd.getEmail());
 				return ps;
 			}
+			
 		}, keyHolder);
 		return keyHolder.getKey().intValue();
 	}
 
 	public FixedDepositDetails getFixedDeposit(final int fixedDepositId) {
 		final String sql = "select * from fixed_deposit_details where fixed_deposit_id = :fixedDepositId";
-		SqlParameterSource namedParameters = new MapSqlParameterSource(
-				"fixedDepositId", fixedDepositId);
+		SqlParameterSource namedParameters = new MapSqlParameterSource("fixedDepositId", fixedDepositId);
 		return namedParameterJdbcTemplate.queryForObject(sql, namedParameters,
 				new RowMapper<FixedDepositDetails>() {
-					public FixedDepositDetails mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
+			
+					public FixedDepositDetails mapRow(ResultSet rs, int rowNum)	throws SQLException {
 						FixedDepositDetails fdd = new FixedDepositDetails();
 						fdd.setActive(rs.getString("active"));
 						fdd.setBankAccountId(rs.getInt("account_id"));
@@ -71,6 +68,7 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 						fdd.setEmail(rs.getString("email"));
 						return fdd;
 					}
+					
 				});
 	}
 
@@ -78,8 +76,8 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 		final String sql = "select * from fixed_deposit_details where active = 'N'";
 		List<FixedDepositDetails> fdds = jdbcTemplate.query(sql,
 				new RowMapper<FixedDepositDetails>() {
-					public FixedDepositDetails mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
+			
+					public FixedDepositDetails mapRow(ResultSet rs, int rowNum)	throws SQLException {
 						FixedDepositDetails fdd = new FixedDepositDetails();
 						fdd.setActive(rs.getString("active"));
 						fdd.setBankAccountId(rs.getInt("account_id"));
@@ -90,15 +88,15 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 						fdd.setEmail(rs.getString("email"));
 						return fdd;
 					}
+					
 				});
 		return fdds;
 	}
 
 	public void setFixedDepositsAsActive(List<FixedDepositDetails> fds) {
 		for (FixedDepositDetails fd : fds) {
-			jdbcTemplate
-					.update("update fixed_deposit_details set active = 'Y' where fixed_deposit_id = ?",
-							fd.getFixedDepositId());
+			jdbcTemplate.update("update fixed_deposit_details set active = 'Y' where fixed_deposit_id = ?",
+					fd.getFixedDepositId());
 		}
 	}
 

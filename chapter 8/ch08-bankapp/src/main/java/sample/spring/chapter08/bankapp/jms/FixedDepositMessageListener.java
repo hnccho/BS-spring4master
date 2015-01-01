@@ -14,6 +14,7 @@ import sample.spring.chapter08.bankapp.dao.FixedDepositDao;
 import sample.spring.chapter08.bankapp.domain.FixedDepositDetails;
 
 public class FixedDepositMessageListener implements MessageListener {
+
 	@Autowired
 	@Qualifier(value = "fixedDepositDao")
 	private FixedDepositDao myFixedDepositDao;
@@ -24,8 +25,7 @@ public class FixedDepositMessageListener implements MessageListener {
 	@Transactional
 	public int createFixedDeposit(FixedDepositDetails fdd) {
 		// -- create fixed deposit
-		bankAccountDao.subtractFromAccount(fdd.getBankAccountId(),
-				fdd.getFdAmount());
+		bankAccountDao.subtractFromAccount(fdd.getBankAccountId(), fdd.getFdAmount());
 		return myFixedDepositDao.createFixedDeposit(fdd);
 	}
 
@@ -42,4 +42,5 @@ public class FixedDepositMessageListener implements MessageListener {
 			createFixedDeposit(fdd);
 		}
 	}
+	
 }

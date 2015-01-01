@@ -16,6 +16,7 @@ import sample.spring.chapter08.bankapp.dao.FixedDepositDao;
 import sample.spring.chapter08.bankapp.domain.FixedDepositDetails;
 
 public class FixedDepositProcessorJob {
+	
 	@Autowired
 	@Qualifier(value = "fixedDepositDao")
 	private FixedDepositDao myFixedDepositDao;
@@ -35,8 +36,7 @@ public class FixedDepositProcessorJob {
 		List<FixedDepositDetails> inactiveFds = getInactiveFixedDeposits();
 		for (FixedDepositDetails fd : inactiveFds) {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
-			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(
-					mimeMessage);
+			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage);
 			mimeMessageHelper.setTo(fd.getEmail());
 			mimeMessageHelper.setSubject(simpleMailMessage.getSubject());
 			mimeMessageHelper.setText(simpleMailMessage.getText());
@@ -44,4 +44,5 @@ public class FixedDepositProcessorJob {
 		}
 		myFixedDepositDao.setFixedDepositsAsActive(inactiveFds);
 	}
+	
 }

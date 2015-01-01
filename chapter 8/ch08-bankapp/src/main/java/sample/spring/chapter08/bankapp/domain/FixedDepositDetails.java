@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class FixedDepositDetails implements Serializable {
+	
 	private static final long serialVersionUID = -8363144927181713477L;
 	private int fixedDepositId;
 	private int bankAccountId;
@@ -76,4 +77,5 @@ public class FixedDepositDetails implements Serializable {
 				+ fdCreationDate + ", fdAmount=" + fdAmount + ", tenure="
 				+ tenure + ", active=" + active + "]";
 	}
+	
 }

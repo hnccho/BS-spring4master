@@ -19,6 +19,7 @@ import sample.spring.chapter08.bankapp.service.BankAccountService;
 import sample.spring.chapter08.bankapp.service.FixedDepositService;
 
 public class BankApp {
+	
 	private static Logger logger = Logger.getLogger(BankApp.class);
 	private static ApplicationContext context;
 
@@ -26,19 +27,16 @@ public class BankApp {
 		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 
-		BankAccountService bankAccountService = context
-				.getBean(BankAccountService.class);
+		BankAccountService bankAccountService = context.getBean(BankAccountService.class);
 		BankAccountDetails bankAccountDetails = new BankAccountDetails();
 		bankAccountDetails.setBalanceAmount(1000);
 		bankAccountDetails.setLastTransactionTimestamp(new Date());
 
-		int bankAccountId = bankAccountService
-				.createBankAccount(bankAccountDetails);
+		int bankAccountId = bankAccountService.createBankAccount(bankAccountDetails);
 
 		logger.info("Created bank account with id - " + bankAccountId);
 
-		FixedDepositService fixedDepositService = context
-				.getBean(FixedDepositService.class);
+		FixedDepositService fixedDepositService = context.getBean(FixedDepositService.class);
 		FixedDepositDetails fdd = new FixedDepositDetails();
 		fdd.setActive("N");
 		fdd.setBankAccountId(bankAccountId);
@@ -56,36 +54,35 @@ public class BankApp {
 		fixedDepositService.createFixedDeposit(fdd);
 
 		Thread.sleep(5000);
-		List<FixedDepositDetails> fixedDepositDetailsList = fixedDepositService
-				.findFixedDepositsByBankAccount(bankAccountId);
+		List<FixedDepositDetails> fixedDepositDetailsList 
+				= fixedDepositService.findFixedDepositsByBankAccount(bankAccountId);
 
 		for (FixedDepositDetails detail : fixedDepositDetailsList) {
 			fixedDepositService.getFixedDeposit(detail.getFixedDepositId());
 		}
 
 		for (FixedDepositDetails detail : fixedDepositDetailsList) {
-			fixedDepositService.getFixedDepositFromCache(detail
-					.getFixedDepositId());
+			fixedDepositService.getFixedDepositFromCache(detail.getFixedDepositId());
 		}
 
 		Thread.sleep(5000);
 
-		Map<String, DefaultMessageListenerContainer> containers = context
-				.getBeansOfType(DefaultMessageListenerContainer.class);
+		Map<String, DefaultMessageListenerContainer> containers 
+				= context.getBeansOfType(DefaultMessageListenerContainer.class);
 		Set<String> keySet = containers.keySet();
 		Iterator<String> iterator = keySet.iterator();
 
 		while (iterator.hasNext()) {
-			DefaultMessageListenerContainer container = containers.get(iterator
-					.next());
+			DefaultMessageListenerContainer container = containers.get(iterator.next());
 			System.out.println("Container - " + container);
 			container.destroy();
 		}
 
-		ThreadPoolTaskScheduler poolTaskScheduler = (ThreadPoolTaskScheduler) context
-				.getBean("emailScheduler");
+		ThreadPoolTaskScheduler poolTaskScheduler 
+				= (ThreadPoolTaskScheduler) context.getBean("emailScheduler");
 		poolTaskScheduler.destroy();
 		BrokerService brokerService = context.getBean(BrokerService.class);
 		brokerService.stop();
 	}
+	
 }

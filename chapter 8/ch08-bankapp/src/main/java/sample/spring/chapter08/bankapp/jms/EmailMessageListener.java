@@ -10,6 +10,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
 public class EmailMessageListener implements MessageListener {
+
 	@Autowired
 	private transient MailSender mailSender;
 
@@ -31,4 +32,5 @@ public class EmailMessageListener implements MessageListener {
 		}
 		sendEmail();
 	}
+	
 }

@@ -38,4 +38,5 @@ public class BankAccountDetails {
 	public void setLastTransactionTimestamp(Date lastTransactionTimestamp) {
 		this.lastTransactionTimestamp = lastTransactionTimestamp;
 	}
+	
 }
