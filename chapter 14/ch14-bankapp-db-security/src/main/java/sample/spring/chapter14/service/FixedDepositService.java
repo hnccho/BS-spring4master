@@ -31,4 +31,5 @@ public interface FixedDepositService {
 	
 	@PreAuthorize("hasPermission(#fixedDepositId, 'sample.spring.chapter14.domain.FixedDepositDetails', write)")
 	void provideAccessToAdmin(int fixedDepositId);
+	
 }

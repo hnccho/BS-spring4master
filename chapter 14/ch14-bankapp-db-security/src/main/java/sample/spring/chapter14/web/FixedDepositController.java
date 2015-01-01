@@ -36,21 +36,20 @@ public class FixedDepositController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listFixedDeposits(Principal principal) {
+		
 		Map<String, List<FixedDepositDetails>> modelData = new HashMap<String, List<FixedDepositDetails>>();
 
-		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder
-				.getContext().getAuthentication().getAuthorities();
+		Collection<GrantedAuthority> authorities 
+			= (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 		Iterator<GrantedAuthority> iterator = authorities.iterator();
 
 		if (iterator.hasNext()) {
 			String role = ((GrantedAuthority) iterator.next()).getAuthority();
 			if (role.equalsIgnoreCase("ROLE_CUSTOMER")) {
-				modelData.put("fdList", fixedDepositService
-						.getFixedDeposits(principal.getName()));
+				modelData.put("fdList", fixedDepositService.getFixedDeposits(principal.getName()));
 			}
 			if (role.equalsIgnoreCase("ROLE_ADMIN")) {
-				modelData.put("fdList",
-						fixedDepositService.getAllFixedDeposits());
+				modelData.put("fdList",	fixedDepositService.getAllFixedDeposits());
 			}
 		}
 		return new ModelAndView("fixedDepositList", modelData);
@@ -78,15 +77,13 @@ public class FixedDepositController {
 		if (!NumberUtils.isNumber(depositAmount)) {
 			modelData.put("error.depositAmount", "enter a valid number");
 		} else if (NumberUtils.toInt(depositAmount) < 1000) {
-			modelData.put("error.depositAmount",
-					"must be greater than or equal to 1000");
+			modelData.put("error.depositAmount", "must be greater than or equal to 1000");
 		}
 
 		if (!NumberUtils.isNumber(tenure)) {
 			modelData.put("error.tenure", "enter a valid number");
 		} else if (NumberUtils.toInt(tenure) < 12) {
-			modelData
-					.put("error.tenure", "must be greater than or equal to 12");
+			modelData.put("error.tenure", "must be greater than or equal to 12");
 		}
 
 		if (email == null || "".equalsIgnoreCase(email)) {
@@ -132,8 +129,7 @@ public class FixedDepositController {
 		if (!NumberUtils.isNumber(tenure)) {
 			modelData.put("error.tenure", "enter a valid number");
 		} else if (NumberUtils.toInt(tenure) < 12) {
-			modelData
-					.put("error.tenure", "must be greater than or equal to 12");
+			modelData.put("error.tenure", "must be greater than or equal to 12");
 		}
 
 		if (email == null || "".equalsIgnoreCase(email)) {
@@ -167,9 +163,9 @@ public class FixedDepositController {
 
 	@RequestMapping(params = "fdAction=view", method = RequestMethod.GET)
 	public ModelAndView viewFixedDepositDetails(HttpServletRequest request) {
-		FixedDepositDetails fixedDepositDetails = fixedDepositService
-				.getFixedDeposit(Integer.parseInt(request
-						.getParameter("fixedDepositId")));
+		FixedDepositDetails fixedDepositDetails 
+			= fixedDepositService.getFixedDeposit(
+					Integer.parseInt(request.getParameter("fixedDepositId")));
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute(fixedDepositDetails);
 		return new ModelAndView("editFixedDepositForm", modelMap);
@@ -177,8 +173,7 @@ public class FixedDepositController {
 
 	@RequestMapping(params = "fdAction=provideAccessToAdmin", method = RequestMethod.GET)
 	public String provideAccessToAdmin(HttpServletRequest request, RedirectAttributes redirectAttr) {
-		int fixedDepositId = Integer.parseInt(request
-				.getParameter("fixedDepositId"));
+		int fixedDepositId = Integer.parseInt(request.getParameter("fixedDepositId"));
 		fixedDepositService.provideAccessToAdmin(fixedDepositId);
 
 		redirectAttr.addAttribute("msg", "Admin access provided to fixed deposit with id " + fixedDepositId);
@@ -190,4 +185,5 @@ public class FixedDepositController {
 		ModelAndView mav = new ModelAndView("error", "msg", ex.getMessage());
 		return mav;
 	}
+	
 }

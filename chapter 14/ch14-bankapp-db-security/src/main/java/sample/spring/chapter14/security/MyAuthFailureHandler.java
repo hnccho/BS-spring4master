@@ -15,7 +15,9 @@ public class MyAuthFailureHandler implements AuthenticationFailureHandler {
 	public void onAuthenticationFailure(HttpServletRequest request,
 			HttpServletResponse response, AuthenticationException exception)
 			throws IOException, ServletException {
+		
 		request.setAttribute("exceptionMsg", exception.getMessage());
 		response.sendRedirect(request.getContextPath() + "/login?exceptionMsg=" + exception.getMessage());
 	}
+	
 }

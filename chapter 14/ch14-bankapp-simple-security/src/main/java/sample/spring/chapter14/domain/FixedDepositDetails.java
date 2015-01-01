@@ -1,14 +1,11 @@
 package sample.spring.chapter14.domain;
 
 public class FixedDepositDetails {
+
 	private long id; // -- id value is set by the system
-
 	private String customerId;
-
 	private String depositAmount;
-
 	private String tenure;
-
 	private String email;
 
 	public FixedDepositDetails() {
@@ -69,4 +66,5 @@ public class FixedDepositDetails {
 				+ ", depositAmount=" + depositAmount + ", tenure=" + tenure
 				+ ", email=" + email + "]";
 	}
+	
 }

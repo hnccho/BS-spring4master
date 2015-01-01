@@ -25,4 +25,5 @@ public interface FixedDepositService {
 
 	@Secured("ROLE_CUSTOMER")
 	void editFixedDeposit(FixedDepositDetails fixedDepositDetails);
+	
 }

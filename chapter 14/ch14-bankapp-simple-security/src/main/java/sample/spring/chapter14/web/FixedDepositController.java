@@ -37,19 +37,17 @@ public class FixedDepositController {
 	public ModelAndView listFixedDeposits(Principal principal) {
 		Map<String, List<FixedDepositDetails>> modelData = new HashMap<String, List<FixedDepositDetails>>();
 
-		Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) SecurityContextHolder
-				.getContext().getAuthentication().getAuthorities();
-		Iterator<GrantedAuthority> iterator = authorities.iterator();
+		Collection<GrantedAuthority> authorities 
+			= (Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 
+		Iterator<GrantedAuthority> iterator = authorities.iterator();
 		if (iterator.hasNext()) {
 			String role = ((GrantedAuthority) iterator.next()).getAuthority();
 			if (role.equalsIgnoreCase("ROLE_CUSTOMER")) {
-				modelData.put("fdList", fixedDepositService
-						.getFixedDeposits(principal.getName()));
+				modelData.put("fdList", fixedDepositService.getFixedDeposits(principal.getName()));
 			}
 			if (role.equalsIgnoreCase("ROLE_ADMIN")) {
-				modelData.put("fdList",
-						fixedDepositService.getAllFixedDeposits());
+				modelData.put("fdList",	fixedDepositService.getAllFixedDeposits());
 			}
 		}
 		return new ModelAndView("fixedDepositList", modelData);
@@ -84,8 +82,7 @@ public class FixedDepositController {
 		if (!NumberUtils.isNumber(tenure)) {
 			modelData.put("error.tenure", "enter a valid number");
 		} else if (NumberUtils.toInt(tenure) < 12) {
-			modelData
-					.put("error.tenure", "must be greater than or equal to 12");
+			modelData.put("error.tenure", "must be greater than or equal to 12");
 		}
 
 		if (email == null || "".equalsIgnoreCase(email)) {
@@ -131,8 +128,7 @@ public class FixedDepositController {
 		if (!NumberUtils.isNumber(tenure)) {
 			modelData.put("error.tenure", "enter a valid number");
 		} else if (NumberUtils.toInt(tenure) < 12) {
-			modelData
-					.put("error.tenure", "must be greater than or equal to 12");
+			modelData.put("error.tenure", "must be greater than or equal to 12");
 		}
 
 		if (email == null || "".equalsIgnoreCase(email)) {
@@ -152,8 +148,7 @@ public class FixedDepositController {
 			modelData.put("fixedDepositDetails", fixedDepositDetails);
 			return new ModelAndView("editFixedDepositForm", modelData);
 		} else {
-			fixedDepositService.editFixedDeposit(
-					fixedDepositDetails);
+			fixedDepositService.editFixedDeposit(fixedDepositDetails);
 			return new ModelAndView("redirect:/fixedDeposit/list");
 		}
 	}
@@ -167,9 +162,9 @@ public class FixedDepositController {
 
 	@RequestMapping(params = "fdAction=view", method = RequestMethod.GET)
 	public ModelAndView viewFixedDepositDetails(HttpServletRequest request) {
-		FixedDepositDetails fixedDepositDetails = fixedDepositService
-				.getFixedDeposit(Integer.parseInt(request
-						.getParameter("fixedDepositId")));
+		FixedDepositDetails fixedDepositDetails 
+			= fixedDepositService.getFixedDeposit(
+					Integer.parseInt(request.getParameter("fixedDepositId")));
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute(fixedDepositDetails);
 		return new ModelAndView("editFixedDepositForm", modelMap);

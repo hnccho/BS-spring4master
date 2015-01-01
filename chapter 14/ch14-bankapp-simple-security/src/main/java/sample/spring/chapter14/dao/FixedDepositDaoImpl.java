@@ -9,21 +9,19 @@ import sample.spring.chapter14.domain.FixedDepositDetails;
 
 @Repository
 public class FixedDepositDaoImpl implements FixedDepositDao {
+	
 	private int counter;
 	private List<FixedDepositDetails> fdList;
 
 	public FixedDepositDaoImpl() {
 		fdList = new ArrayList<FixedDepositDetails>();
-		fdList.add(new FixedDepositDetails(counter++, "cust1", "10000", "24",
-				"cust1@somedomain.com"));
-		fdList.add(new FixedDepositDetails(counter++, "cust2", "10000", "24",
-				"cust2@somedomain.com"));
+		fdList.add(new FixedDepositDetails(counter++, "cust1", "10000", "24", "cust1@somedomain.com"));
+		fdList.add(new FixedDepositDetails(counter++, "cust2", "10000", "24", "cust2@somedomain.com"));
 	}
 
 	@Override
 	public List<FixedDepositDetails> getFixedDeposits(String user) {
 		List<FixedDepositDetails> fds = new ArrayList<FixedDepositDetails>();
-
 		for (FixedDepositDetails details : fdList) {
 			if (details.getCustomerId().equalsIgnoreCase(user))
 				fds.add(details);
@@ -34,7 +32,6 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 	@Override
 	public List<FixedDepositDetails> getAllFixedDeposits() {
 		List<FixedDepositDetails> fds = new ArrayList<FixedDepositDetails>();
-
 		for (FixedDepositDetails details : fdList) {
 			fds.add(details);
 		}
@@ -69,8 +66,7 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 
 	public void editFixedDeposit(FixedDepositDetails modifiedFixedDepositDetails) {
 		for (FixedDepositDetails fixedDepositDetails : fdList) {
-			if (fixedDepositDetails.getId() == modifiedFixedDepositDetails
-					.getId()) {
+			if (fixedDepositDetails.getId() == modifiedFixedDepositDetails.getId()) {
 				fdList.remove(fixedDepositDetails);
 				break;
 			}

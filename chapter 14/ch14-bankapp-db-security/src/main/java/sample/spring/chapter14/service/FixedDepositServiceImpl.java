@@ -20,17 +20,17 @@ import sample.spring.chapter14.domain.FixedDepositDetails;
 
 @Service
 public class FixedDepositServiceImpl implements FixedDepositService {
+
 	@Autowired
 	private FixedDepositDao fixedDepositDao;
 
 	@Autowired
 	private MutableAclService mutableAclService;
 
-	private void addPermission(long fixedDepositId, Sid recipient,
-			Permission permission) {
+	private void addPermission(long fixedDepositId, Sid recipient, Permission permission) {
+		
 		MutableAcl acl;
-		ObjectIdentity oid = new ObjectIdentityImpl(FixedDepositDetails.class,
-				fixedDepositId);
+		ObjectIdentity oid = new ObjectIdentityImpl(FixedDepositDetails.class, fixedDepositId);
 
 		try {
 			acl = (MutableAcl) mutableAclService.readAclById(oid);
@@ -58,19 +58,18 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 	@Override
 	public void saveFixedDeposit(FixedDepositDetails fixedDepositDetails) {
 		fixedDepositDao.saveFixedDeposit(fixedDepositDetails);
-		addPermission(fixedDepositDetails.getId(), new PrincipalSid(
-				SecurityContextHolder.getContext().getAuthentication()
-						.getName()), BasePermission.READ);
-		addPermission(fixedDepositDetails.getId(), new PrincipalSid(
-				SecurityContextHolder.getContext().getAuthentication()
-						.getName()), BasePermission.WRITE);
+		addPermission(fixedDepositDetails.getId(), 
+				new PrincipalSid(SecurityContextHolder.getContext().getAuthentication().getName()), 
+								 BasePermission.READ);
+		addPermission(fixedDepositDetails.getId(), 
+				new PrincipalSid(SecurityContextHolder.getContext().getAuthentication().getName()), 
+								 BasePermission.WRITE);
 	}
 
 	@Override
 	public void closeFixedDeposit(int fixedDepositId) {
 		fixedDepositDao.closeFixedDeposit(fixedDepositId);
-		ObjectIdentity oid = new ObjectIdentityImpl(FixedDepositDetails.class,
-				fixedDepositId);
+		ObjectIdentity oid = new ObjectIdentityImpl(FixedDepositDetails.class, fixedDepositId);
 		mutableAclService.deleteAcl(oid, false);
 	}
 
@@ -86,11 +85,9 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 
 	@Override
 	public void provideAccessToAdmin(int fixedDepositId) {
-		addPermission(fixedDepositId, new PrincipalSid("admin"),
-				BasePermission.READ);
-		addPermission(fixedDepositId, new PrincipalSid("admin"),
-				BasePermission.ADMINISTRATION);
-		addPermission(fixedDepositId, new PrincipalSid("admin"),
-				BasePermission.DELETE);
+		addPermission(fixedDepositId, new PrincipalSid("admin"), BasePermission.READ);
+		addPermission(fixedDepositId, new PrincipalSid("admin"), BasePermission.ADMINISTRATION);
+		addPermission(fixedDepositId, new PrincipalSid("admin"), BasePermission.DELETE);
 	}
+	
 }
