@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
 public class FixedDepositDetails {
+	
 	private long id;
 
 	@Min(1000)
@@ -26,8 +27,7 @@ public class FixedDepositDetails {
 	public FixedDepositDetails() {
 	}
 
-	public FixedDepositDetails(long id, long depositAmount, Date maturityDate,
-			String email) {
+	public FixedDepositDetails(long id, long depositAmount, Date maturityDate, String email) {
 		this.id = id;
 		this.depositAmount = depositAmount;
 		this.maturityDate = maturityDate;
@@ -71,4 +71,5 @@ public class FixedDepositDetails {
 		return "id :" + id + ", deposit amount : " + depositAmount
 				+ ", email : " + email;
 	}
+	
 }

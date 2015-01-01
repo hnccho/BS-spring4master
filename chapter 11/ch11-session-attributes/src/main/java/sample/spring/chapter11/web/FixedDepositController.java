@@ -21,11 +21,10 @@ import sample.spring.chapter11.service.FixedDepositService;
 
 @Controller
 @RequestMapping(value = "/fixedDeposit")
-@SessionAttributes(value = { "newFixedDepositDetails",
-		"editableFixedDepositDetails" }, types = {FixedDepositDetails.class})
+@SessionAttributes(value = { "newFixedDepositDetails", "editableFixedDepositDetails" }, types = {FixedDepositDetails.class})
 public class FixedDepositController {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositController.class);
+	
+	private static Logger logger = Logger.getLogger(FixedDepositController.class);
 
 	@Autowired
 	private FixedDepositService fixedDepositService;
@@ -56,8 +55,7 @@ public class FixedDepositController {
 			@ModelAttribute(value = "newFixedDepositDetails") FixedDepositDetails fixedDepositDetails,
 			BindingResult bindingResult, SessionStatus sessionStatus) {
 
-		new FixedDepositDetailsValidator().validate(fixedDepositDetails,
-				bindingResult);
+		new FixedDepositDetailsValidator().validate(fixedDepositDetails, bindingResult);
 
 		if (bindingResult.hasErrors()) {
 			logger.info("openFixedDeposit() method: Validation errors - re-displaying form for opening a new fixed deposit");
@@ -75,8 +73,7 @@ public class FixedDepositController {
 			@ModelAttribute("editableFixedDepositDetails") FixedDepositDetails fixedDepositDetails,
 			BindingResult bindingResult, SessionStatus sessionStatus) {
 
-		new FixedDepositDetailsValidator().validate(fixedDepositDetails,
-				bindingResult);
+		new FixedDepositDetailsValidator().validate(fixedDepositDetails, bindingResult);
 
 		if (bindingResult.hasErrors()) {
 			logger.info("editFixedDeposit() method: Validation errors - re-displaying form for editing a fixed deposit");
@@ -92,6 +89,7 @@ public class FixedDepositController {
 	@RequestMapping(params = "fdAction=close", method = RequestMethod.GET)
 	public String closeFixedDeposit(
 			@RequestParam(value = "fixedDepositId") int fdId) {
+		
 		fixedDepositService.closeFixedDeposit(fdId);
 		logger.info("closeFixedDeposit() method: Fixed deposit successfully closed. Redirecting to show the list of fixed deposits.");
 		return "redirect:/fixedDeposit/list";
@@ -100,11 +98,12 @@ public class FixedDepositController {
 	@RequestMapping(params = "fdAction=view", method = RequestMethod.GET)
 	public ModelAndView viewFixedDepositDetails(
 			@RequestParam(value = "fixedDepositId") int fixedDepositId) {
-		FixedDepositDetails fixedDepositDetails = fixedDepositService
-				.getFixedDeposit(fixedDepositId);
+		
+		FixedDepositDetails fixedDepositDetails = fixedDepositService.getFixedDeposit(fixedDepositId);
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		modelMap.put("editableFixedDepositDetails", fixedDepositDetails);
 		logger.info("viewFixedDepositDetails() method: Fixed deposit details loaded from data store. Showing form for editing the loaded fixed deposit.");
 		return new ModelAndView("editFixedDepositForm", modelMap);
 	}
+	
 }

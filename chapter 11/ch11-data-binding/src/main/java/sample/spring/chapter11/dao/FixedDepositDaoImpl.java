@@ -11,20 +11,16 @@ import sample.spring.chapter11.domain.FixedDepositDetails;
 
 @Repository
 public class FixedDepositDaoImpl implements FixedDepositDao {
+	
 	private List<FixedDepositDetails> fdList;
 
 	public FixedDepositDaoImpl() {
 		fdList = new ArrayList<FixedDepositDetails>();
-		fdList.add(new FixedDepositDetails(1, 10000, new Date(),
-				"a1email@somedomain.com"));
-		fdList.add(new FixedDepositDetails(2, 20000, new Date(),
-				"a2email@somedomain.com"));
-		fdList.add(new FixedDepositDetails(3, 30000, new Date(),
-				"a3email@somedomain.com"));
-		fdList.add(new FixedDepositDetails(4, 50000, new Date(),
-				"a4email@somedomain.com"));
-		fdList.add(new FixedDepositDetails(5, 15000, new Date(),
-				"a5email@somedomain.com"));
+		fdList.add(new FixedDepositDetails(1, 10000, new Date(), "a1email@somedomain.com"));
+		fdList.add(new FixedDepositDetails(2, 20000, new Date(), "a2email@somedomain.com"));
+		fdList.add(new FixedDepositDetails(3, 30000, new Date(), "a3email@somedomain.com"));
+		fdList.add(new FixedDepositDetails(4, 50000, new Date(), "a4email@somedomain.com"));
+		fdList.add(new FixedDepositDetails(5, 15000, new Date(), "a5email@somedomain.com"));
 	}
 
 	@Override
@@ -70,4 +66,5 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 		}
 		fdList.add(modifiedFixedDepositDetails);
 	}
+	
 }

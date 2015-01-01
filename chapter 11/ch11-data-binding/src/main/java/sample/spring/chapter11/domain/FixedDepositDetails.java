@@ -3,19 +3,16 @@ package sample.spring.chapter11.domain;
 import java.util.Date;
 
 public class FixedDepositDetails {
+
 	private long id;
-
 	private long depositAmount;
-
 	private String email;
-
 	private Date maturityDate;
 
 	public FixedDepositDetails() {
 	}
 
-	public FixedDepositDetails(long id, long depositAmount, Date maturityDate,
-			String email) {
+	public FixedDepositDetails(long id, long depositAmount, Date maturityDate, String email) {
 		this.id = id;
 		this.depositAmount = depositAmount;
 		this.maturityDate = maturityDate;
@@ -59,4 +56,5 @@ public class FixedDepositDetails {
 		return "id :" + id + ", deposit amount : " + depositAmount
 				+ ", email : " + email;
 	}
+	
 }

@@ -15,6 +15,7 @@ public class FixedDepositDetailsValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
+		
 		FixedDepositDetails fixedDepositDetails = (FixedDepositDetails) target;
 
 		long depositAmount = fixedDepositDetails.getDepositAmount();
@@ -33,4 +34,5 @@ public class FixedDepositDetailsValidator implements Validator {
 					"not a well-formed email address");
 		}
 	}
+	
 }
