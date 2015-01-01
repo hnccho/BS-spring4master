@@ -7,8 +7,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-
 public class FixedDepositDetails {
+
 	@NotNull
 	private long id;
 	
@@ -23,8 +23,7 @@ public class FixedDepositDetails {
 	@Size(min=5, max=100)
 	private String email;
 
-	public FixedDepositDetails(long id, float depositAmount, int tenure,
-			String email) {
+	public FixedDepositDetails(long id, float depositAmount, int tenure, String email) {
 		this.id = id;
 		this.depositAmount = depositAmount;
 		this.tenure = tenure;
@@ -67,4 +66,5 @@ public class FixedDepositDetails {
 		return "id :" + id + ", deposit amount : " + depositAmount
 				+ ", tenure : " + tenure + ", email : " + email;
 	}
+	
 }

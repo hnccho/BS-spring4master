@@ -12,8 +12,8 @@ import sample.spring.chapter06.bankapp.validator.FixedDepositValidator;
 
 @Service(value = "fixedDepositService")
 public class FixedDepositServiceImpl implements FixedDepositService {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositServiceImpl.class);
+	
+	private static Logger logger = Logger.getLogger(FixedDepositServiceImpl.class);
 
 	@Autowired
 	@Qualifier(value = "myFixedDepositDao")
@@ -22,8 +22,7 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 	@Override
 	public void createFixedDeposit(FixedDepositDetails fdd) throws Exception {
 		// -- create fixed deposit
-		BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(
-				fdd, "Errors");
+		BeanPropertyBindingResult bindingResult = new BeanPropertyBindingResult(fdd, "Errors");
 		FixedDepositValidator validator = new FixedDepositValidator();
 		validator.validate(fdd, bindingResult);
 		if (bindingResult.getErrorCount() > 0) {
@@ -33,4 +32,5 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 			logger.info("Created fixed deposit");
 		}
 	}
+	
 }

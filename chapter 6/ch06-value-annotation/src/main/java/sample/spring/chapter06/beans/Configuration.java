@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component(value="configuration")
 public class Configuration {
+	
 	public static String environment = "DEV";
 
 	public String getCountry() {
@@ -21,4 +22,5 @@ public class Configuration {
 	public String getCity() {
 		return "Some city";
 	}
+	
 }

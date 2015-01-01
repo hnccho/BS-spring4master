@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component(value="sample")
 public class Sample {
+	
 	@Value("#{configuration.environment}")
 	private String environment;
 
@@ -26,6 +27,7 @@ public class Sample {
 	@Autowired
 	public void splitName(
 			@Value("#{configuration.splitName('FirstName LastName')}") String[] splitName) {
+	
 		this.splitName = splitName;
 	}
 
@@ -41,4 +43,5 @@ public class Sample {
 				+ ", country=" + country + ", state=" + state + ", splitName="
 				+ Arrays.toString(splitName) + ", city=" + city + "]";
 	}
+	
 }

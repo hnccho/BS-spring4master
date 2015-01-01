@@ -18,4 +18,5 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 		// -- create fixed deposit
 		myFixedDepositDao.createFixedDeposit(fdd);
 	}
+	
 }

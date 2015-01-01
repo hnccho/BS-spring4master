@@ -19,4 +19,5 @@ public class FixedDepositValidator implements Validator {
 			errors.reject("zeroDepositAmount");
 		}
 	}
+	
 }

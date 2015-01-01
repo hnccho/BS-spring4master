@@ -7,8 +7,8 @@ import sample.spring.chapter06.bankapp.domain.CustomerRequestDetails;
 
 @Repository(value = "customerRequestDao")
 public class CustomerRequestDaoImpl implements CustomerRequestDao {
-	private static Logger logger = Logger
-			.getLogger(CustomerRequestDaoImpl.class);
+
+	private static Logger logger = Logger.getLogger(CustomerRequestDaoImpl.class);
 
 	public CustomerRequestDaoImpl() {
 		logger.info("Created CustomerRequestDaoImpl instance");
@@ -18,4 +18,5 @@ public class CustomerRequestDaoImpl implements CustomerRequestDao {
 	public void submitRequest(CustomerRequestDetails userRequestDetails) {
 		// --save UserRequestDetails
 	}
+	
 }

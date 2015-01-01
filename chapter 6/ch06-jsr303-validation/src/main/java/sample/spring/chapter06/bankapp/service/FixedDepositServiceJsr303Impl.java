@@ -16,8 +16,8 @@ import sample.spring.chapter06.bankapp.domain.FixedDepositDetails;
 
 @Service(value = "fixedDepositServiceJsr303")
 public class FixedDepositServiceJsr303Impl implements FixedDepositService {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositServiceJsr303Impl.class);
+
+	private static Logger logger = Logger.getLogger(FixedDepositServiceJsr303Impl.class);
 
 	@Autowired
 	private Validator validator;
@@ -28,10 +28,8 @@ public class FixedDepositServiceJsr303Impl implements FixedDepositService {
 
 	@Override
 	public void createFixedDeposit(FixedDepositDetails fdd) throws Exception {
-		Set<ConstraintViolation<FixedDepositDetails>> violations = validator
-				.validate(fdd);
-		Iterator<ConstraintViolation<FixedDepositDetails>> itr = violations
-				.iterator();
+		Set<ConstraintViolation<FixedDepositDetails>> violations = validator.validate(fdd);
+		Iterator<ConstraintViolation<FixedDepositDetails>> itr = violations.iterator();
 		if (itr.hasNext()) {
 			logger.error("Errors were found while validating FixedDepositDetails instance");
 		} else {
@@ -39,4 +37,5 @@ public class FixedDepositServiceJsr303Impl implements FixedDepositService {
 			logger.info("Created fixed deposit");
 		}
 	}
+	
 }

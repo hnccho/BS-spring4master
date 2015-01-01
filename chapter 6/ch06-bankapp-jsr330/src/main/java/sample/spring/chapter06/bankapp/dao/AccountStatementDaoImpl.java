@@ -10,6 +10,7 @@ import sample.spring.chapter06.bankapp.domain.AccountStatement;
 
 @Named(value="accountStatementDao")
 public class AccountStatementDaoImpl implements AccountStatementDao {
+	
 	private static Logger logger = Logger.getLogger(AccountStatementDaoImpl.class);
 	
 	@Override
@@ -17,4 +18,5 @@ public class AccountStatementDaoImpl implements AccountStatementDao {
 		logger.info("Getting account statement");
 		return new AccountStatement();
 	}
+	
 }

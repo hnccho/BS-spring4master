@@ -11,8 +11,7 @@ import sample.spring.chapter06.bankapp.domain.CustomerRegistrationDetails;
 
 @Named("customerRegistrationService")
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class CustomerRegistrationServiceImpl implements
-		CustomerRegistrationService {
+public class CustomerRegistrationServiceImpl implements CustomerRegistrationService {
 
 	private CustomerRegistrationDetails customerRegistrationDetails;
 
@@ -20,8 +19,7 @@ public class CustomerRegistrationServiceImpl implements
 	private CustomerRegistrationDao customerRegistrationDao;
 
 	@Inject
-	public void obtainCustomerRegistrationDetails(
-			CustomerRegistrationDetails customerRegistrationDetails) {
+	public void obtainCustomerRegistrationDetails(CustomerRegistrationDetails customerRegistrationDetails) {
 		this.customerRegistrationDetails = customerRegistrationDetails;
 	}
 

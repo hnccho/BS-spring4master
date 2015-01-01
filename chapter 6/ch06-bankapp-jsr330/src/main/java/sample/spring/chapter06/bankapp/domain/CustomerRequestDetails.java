@@ -11,7 +11,9 @@ import org.springframework.context.annotation.Scope;
 @Named(value="customerRequestDetails")
 @Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CustomerRequestDetails {
+	
 	private static Logger logger = Logger.getLogger(CustomerRequestDetails.class);
+
 	private String type;
 	private String description;
 	private String category;
@@ -79,4 +81,5 @@ public class CustomerRequestDetails {
 	public void setResolutionTimeInDays(String resolutionTimeInDays) {
 		this.resolutionTimeInDays = resolutionTimeInDays;
 	}
+	
 }

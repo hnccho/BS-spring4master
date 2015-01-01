@@ -1,6 +1,7 @@
 package sample.spring.chapter06.beans;
 
 public class Sample {
+	
 	private String environment;
 	private String currency;
 	private String country;
@@ -43,4 +44,5 @@ public class Sample {
 		return "Sample [environment=" + environment + ", currency=" + currency
 				+ ", country=" + country + ", state=" + state + "]";
 	}
+	
 }

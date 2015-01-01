@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import sample.spring.chapter06.bankapp.dao.CustomerRegistrationDao;
 import sample.spring.chapter06.bankapp.domain.CustomerRegistrationDetails;
 
-public class CustomerRegistrationServiceImpl implements
-		CustomerRegistrationService {
+public class CustomerRegistrationServiceImpl implements	CustomerRegistrationService {
 
 	private CustomerRegistrationDetails customerRegistrationDetails;
 
@@ -14,8 +13,7 @@ public class CustomerRegistrationServiceImpl implements
 	private CustomerRegistrationDao customerRegistrationDao;
 
 	@Autowired
-	public void obtainCustomerRegistrationDetails(
-			CustomerRegistrationDetails customerRegistrationDetails) {
+	public void obtainCustomerRegistrationDetails(CustomerRegistrationDetails customerRegistrationDetails) {
 		this.customerRegistrationDetails = customerRegistrationDetails;
 	}
 
@@ -46,4 +44,5 @@ public class CustomerRegistrationServiceImpl implements
 	public void register() {
 		customerRegistrationDao.registerCustomer(customerRegistrationDetails);
 	}
+	
 }

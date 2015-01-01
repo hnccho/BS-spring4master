@@ -10,8 +10,7 @@ import sample.spring.chapter06.bankapp.domain.CustomerRegistrationDetails;
 
 @Service("customerRegistrationService")
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class CustomerRegistrationServiceImpl implements
-		CustomerRegistrationService {
+public class CustomerRegistrationServiceImpl implements	CustomerRegistrationService {
 
 	private CustomerRegistrationDetails customerRegistrationDetails;
 

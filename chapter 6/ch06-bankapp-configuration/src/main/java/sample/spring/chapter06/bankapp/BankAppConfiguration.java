@@ -70,4 +70,5 @@ public class BankAppConfiguration {
 	public static BeanNamePrinterBeanFactoryPostProcessor applicationConfigurer() {
 		return new BeanNamePrinterBeanFactoryPostProcessor();
 	}
+	
 }

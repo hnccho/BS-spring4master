@@ -8,6 +8,7 @@ import sample.spring.chapter06.bankapp.dao.AccountStatementDao;
 import sample.spring.chapter06.bankapp.domain.AccountStatement;
 
 public class AccountStatementServiceImpl implements AccountStatementService {
+
 	@Autowired
 	private AccountStatementDao accountStatementDao;
 
@@ -15,4 +16,5 @@ public class AccountStatementServiceImpl implements AccountStatementService {
 	public AccountStatement getAccountStatement(Date from, Date to) {
 		return accountStatementDao.getAccountStatement(from, to);
 	}
+	
 }

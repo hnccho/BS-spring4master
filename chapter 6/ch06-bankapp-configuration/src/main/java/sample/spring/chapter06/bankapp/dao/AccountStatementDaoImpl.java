@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import sample.spring.chapter06.bankapp.domain.AccountStatement;
 
 public class AccountStatementDaoImpl implements AccountStatementDao {
+	
 	private static Logger logger = Logger.getLogger(AccountStatementDaoImpl.class);
 	
 	@Override
