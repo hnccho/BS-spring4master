@@ -9,8 +9,9 @@ import sample.spring.chapter09.bankapp.domain.BankAccountDetails;
 
 @Service(value = "bankAccountService")
 public class BankAccountServiceImpl implements BankAccountService {
-	private static Logger logger = Logger
-			.getLogger(BankAccountServiceImpl.class);
+
+	private static Logger logger = Logger.getLogger(BankAccountServiceImpl.class);
+
 	@Autowired
 	private BankAccountDao bankAccountDao;
 
@@ -19,4 +20,5 @@ public class BankAccountServiceImpl implements BankAccountService {
 		logger.info("createBankAccount method invoked");
 		return bankAccountDao.createBankAccount(bankAccountDetails);
 	}
+	
 }

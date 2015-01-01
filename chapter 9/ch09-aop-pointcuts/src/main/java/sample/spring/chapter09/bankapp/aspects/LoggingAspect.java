@@ -14,6 +14,7 @@ import sample.spring.chapter09.bankapp.domain.FixedDepositDetails;
 @Component
 @SuppressWarnings("unused")
 public class LoggingAspect {
+	
 	private Logger logger = Logger.getLogger(LoggingAspect.class);
 
 	@Pointcut(value = "execution(* sample.spring.chapter09.bankapp.service.*Service.*(..))")
@@ -31,4 +32,5 @@ public class LoggingAspect {
 			logger.info("args[" + i + "] -->" + args[i]);
 		}
 	}
+	
 }

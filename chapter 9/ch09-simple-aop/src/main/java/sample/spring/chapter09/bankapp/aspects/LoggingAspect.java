@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
+	
 	private Logger logger = Logger.getLogger(LoggingAspect.class);
 
 	@Before(value = "execution(* sample.spring.chapter09.bankapp.service.*Service.*(..))")
@@ -21,4 +22,5 @@ public class LoggingAspect {
 			logger.info("args[" + i + "] -->" + args[i]);
 		}
 	}
+	
 }

@@ -18,6 +18,7 @@ import sample.spring.chapter09.bankapp.domain.FixedDepositDetails;
 
 @SuppressWarnings("unused")
 public class SampleAspect {
+	
 	private Logger logger = Logger.getLogger(SampleAspect.class);
 
 	public void afterReturningAdvice(JoinPoint joinPoint, int aValue) {
@@ -31,8 +32,7 @@ public class SampleAspect {
 	}
 
 	public void afterAdvice(JoinPoint joinPoint) {
-		logger.info("After advice executed for "
-				+ joinPoint.getSignature().getName());
+		logger.info("After advice executed for " + joinPoint.getSignature().getName());
 	}
 
 	public Object aroundAdvice(ProceedingJoinPoint pjp) {
@@ -48,4 +48,5 @@ public class SampleAspect {
 		logger.info(watch.prettyPrint());
 		return obj;
 	}
+	
 }

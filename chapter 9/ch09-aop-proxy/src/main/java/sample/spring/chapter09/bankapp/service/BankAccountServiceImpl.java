@@ -11,8 +11,9 @@ import sample.spring.chapter09.bankapp.exception.BankAccountAlreadyExistsExcepti
 
 @Service(value = "bankAccountService")
 public class BankAccountServiceImpl implements BankAccountService {
-	private static Logger logger = Logger
-			.getLogger(BankAccountServiceImpl.class);
+	
+	private static Logger logger = Logger.getLogger(BankAccountServiceImpl.class);
+
 	@Autowired
 	private BankAccountDao bankAccountDao;
 
@@ -32,4 +33,5 @@ public class BankAccountServiceImpl implements BankAccountService {
 		//--check if the account already exists
 		return false;
 	}
+	
 }

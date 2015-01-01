@@ -20,6 +20,7 @@ import sample.spring.chapter09.bankapp.domain.FixedDepositDetails;
 @Component
 @SuppressWarnings("unused")
 public class SampleAspect {
+	
 	private Logger logger = Logger.getLogger(SampleAspect.class);
 
 	@Pointcut(value = "execution(* sample.spring..BankAccountService.createBankAccount(..))")
@@ -52,6 +53,7 @@ public class SampleAspect {
 
 	@Around(value = "execution(* sample.spring..*Service.*(..))")
 	public Object aroundAdvice(ProceedingJoinPoint pjp) {
+		
 		Object obj = null;
 		StopWatch watch = new StopWatch();
 		watch.start();
@@ -64,4 +66,5 @@ public class SampleAspect {
 		logger.info(watch.prettyPrint());
 		return obj;
 	}
+	
 }
