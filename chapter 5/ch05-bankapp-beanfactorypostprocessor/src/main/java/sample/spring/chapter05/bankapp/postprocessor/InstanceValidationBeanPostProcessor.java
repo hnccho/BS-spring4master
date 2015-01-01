@@ -7,10 +7,9 @@ import org.springframework.core.Ordered;
 
 import sample.spring.chapter05.bankapp.common.InstanceValidator;
 
-public class InstanceValidationBeanPostProcessor implements BeanPostProcessor,
-		Ordered {
-	private static Logger logger = Logger
-			.getLogger(InstanceValidationBeanPostProcessor.class);
+public class InstanceValidationBeanPostProcessor implements BeanPostProcessor, Ordered {
+
+	private static Logger logger = Logger.getLogger(InstanceValidationBeanPostProcessor.class);
 	private int order;
 
 	public InstanceValidationBeanPostProcessor() {
@@ -18,15 +17,13 @@ public class InstanceValidationBeanPostProcessor implements BeanPostProcessor,
 	}
 
 	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName)
-			throws BeansException {
+	public Object postProcessBeforeInitialization(Object bean, String beanName)	throws BeansException {
 		logger.info("InstanceValidationBeanPostProcessor's postProcessBeforeInitialization method invoked for bean " + beanName + " of type " + bean.getClass());
 		return bean;
 	}
 
 	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName)
-			throws BeansException {
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		logger.info("InstanceValidationBeanPostProcessor's postProcessAfterInitialization method invoked for bean " + beanName + " of type " + bean.getClass());
 		if (bean instanceof InstanceValidator) {
 			((InstanceValidator) bean).validateInstance();
@@ -42,4 +39,5 @@ public class InstanceValidationBeanPostProcessor implements BeanPostProcessor,
 	public int getOrder() {
 		return order;
 	}
+	
 }

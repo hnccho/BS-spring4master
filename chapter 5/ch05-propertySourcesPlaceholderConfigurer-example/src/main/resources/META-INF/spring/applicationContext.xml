@@ -24,4 +24,5 @@
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="false" />
 	</bean>
+	
 </beans>

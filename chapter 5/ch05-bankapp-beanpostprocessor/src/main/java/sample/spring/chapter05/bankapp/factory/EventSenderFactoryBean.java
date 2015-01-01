@@ -4,10 +4,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class EventSenderFactoryBean implements FactoryBean<EventSender>,
-		InitializingBean {
-	private static Logger logger = Logger
-			.getLogger(EventSenderFactoryBean.class);
+public class EventSenderFactoryBean implements FactoryBean<EventSender>, InitializingBean {
+
+	private static Logger logger = Logger.getLogger(EventSenderFactoryBean.class);
 
 	public EventSenderFactoryBean() {
 		logger.info("Created EventSenderFactoryBean");

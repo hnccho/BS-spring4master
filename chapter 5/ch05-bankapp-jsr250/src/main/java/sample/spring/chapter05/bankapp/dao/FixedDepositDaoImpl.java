@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import sample.spring.chapter05.bankapp.domain.FixedDepositDetails;
 
 public class FixedDepositDaoImpl implements FixedDepositDao {
+	
 	private static Logger logger = Logger.getLogger(FixedDepositDaoImpl.class);
 	private DatabaseConnection connection;
 
@@ -17,13 +18,13 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 
 	@PostConstruct
 	public void initializeDbConnection() {
-		logger.info("FixedDepositDaoImpl’s initializeDbConnection method invoked");
+		logger.info("FixedDepositDaoImpl's initializeDbConnection method invoked");
 		connection = DatabaseConnection.getInstance();
 	}
 
 	
 	public boolean createFixedDeposit(FixedDepositDetails fdd) {
-		logger.info("FixedDepositDaoImpl’s createFixedDeposit method invoked");
+		logger.info("FixedDepositDaoImpl's createFixedDeposit method invoked");
 		// -- save the fixed deposits and then return true
 		return true;
 	}
@@ -33,4 +34,5 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 		logger.info("FixedDepositDaoImpl's releaseDbConnection method invoked");
 		connection.releaseConnection();
 	}
+	
 }

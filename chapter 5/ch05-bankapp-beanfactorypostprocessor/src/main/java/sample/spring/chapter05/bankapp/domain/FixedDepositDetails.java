@@ -1,6 +1,7 @@
 package sample.spring.chapter05.bankapp.domain;
 
 public class FixedDepositDetails {
+
 	private long id;
 	private float depositAmount;
 	private int tenure;
@@ -45,4 +46,5 @@ public class FixedDepositDetails {
 		return "id :" + id + ", deposit amount : " + depositAmount
 				+ ", tenure : " + tenure + ", email : " + email;
 	}
+	
 }

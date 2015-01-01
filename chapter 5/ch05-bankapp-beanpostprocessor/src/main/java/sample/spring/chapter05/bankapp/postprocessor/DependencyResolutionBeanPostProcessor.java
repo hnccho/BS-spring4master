@@ -8,12 +8,11 @@ import org.springframework.core.Ordered;
 import sample.spring.chapter05.bankapp.common.DependencyResolver;
 import sample.spring.chapter05.bankapp.common.MyApplicationContext;
 
-public class DependencyResolutionBeanPostProcessor implements BeanPostProcessor,
-		Ordered {
+public class DependencyResolutionBeanPostProcessor implements BeanPostProcessor, Ordered {
+	
 	private MyApplicationContext myApplicationContext;
 	private int order;
-	private static Logger logger = Logger
-			.getLogger(DependencyResolutionBeanPostProcessor.class);
+	private static Logger logger = Logger.getLogger(DependencyResolutionBeanPostProcessor.class);
 	
 	public DependencyResolutionBeanPostProcessor() {
 		logger.info("Created DependencyResolutionBeanPostProcessor instance");
@@ -29,8 +28,7 @@ public class DependencyResolutionBeanPostProcessor implements BeanPostProcessor,
 	}
 
 	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName)
-			throws BeansException {
+	public Object postProcessBeforeInitialization(Object bean, String beanName)	throws BeansException {
 		logger.info("DependencyResolutionBeanPostProcessor's postProcessBeforeInitialization method invoked for bean " + beanName + " of type " + bean.getClass());
 		if (bean instanceof DependencyResolver) {
 			((DependencyResolver) bean).resolveDependency(myApplicationContext);
@@ -39,14 +37,12 @@ public class DependencyResolutionBeanPostProcessor implements BeanPostProcessor,
 	}
 
 	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName)
-			throws BeansException {
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		logger.info("DependencyResolutionBeanPostProcessor's postProcessAfterInitialization method invoked for bean " + beanName + " of type " + bean.getClass());
 		return bean;
 	}
 
-	public void setMyApplicationContext(
-			MyApplicationContext myApplicationContext) {
+	public void setMyApplicationContext(MyApplicationContext myApplicationContext) {
 		this.myApplicationContext = myApplicationContext;
 	}
 

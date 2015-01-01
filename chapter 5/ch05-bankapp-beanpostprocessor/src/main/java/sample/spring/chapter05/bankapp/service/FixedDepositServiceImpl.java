@@ -7,10 +7,9 @@ import sample.spring.chapter05.bankapp.common.MyApplicationContext;
 import sample.spring.chapter05.bankapp.dao.FixedDepositDao;
 import sample.spring.chapter05.bankapp.domain.FixedDepositDetails;
 
-public class FixedDepositServiceImpl implements FixedDepositService,
-		DependencyResolver {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositServiceImpl.class);
+public class FixedDepositServiceImpl implements FixedDepositService, DependencyResolver {
+
+	private static Logger logger = Logger.getLogger(FixedDepositServiceImpl.class);
 	private FixedDepositDao fixedDepositDao;
 
 	@Override
@@ -24,4 +23,5 @@ public class FixedDepositServiceImpl implements FixedDepositService,
 		logger.info("Resolving dependencies of FixedDepositServiceImpl instance");
 		fixedDepositDao = myApplicationContext.getBean(FixedDepositDao.class);
 	}
+	
 }

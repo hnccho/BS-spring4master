@@ -1,6 +1,7 @@
 package sample.spring.chapter05.domain;
 
 public class WebServiceConfiguration {
+	
 	private String webServiceUrl;
 
 	public String getWebServiceUrl() {
@@ -15,4 +16,5 @@ public class WebServiceConfiguration {
 	public String toString() {
 		return "WebServiceConfiguration [webServiceUrl=" + webServiceUrl + "]";
 	}
+	
 }

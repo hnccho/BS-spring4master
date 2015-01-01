@@ -8,13 +8,16 @@ import sample.spring.chapter05.domain.DataSource;
 import sample.spring.chapter05.domain.WebServiceConfiguration;
 
 public class SampleApp {
+	
 	private static Logger logger = Logger.getLogger(SampleApp.class);
 	private static ApplicationContext context;
 	
 	public static void main(String args[]) {
 		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
+		
 		logger.info(context.getBean(DataSource.class));
 		logger.info(context.getBean(WebServiceConfiguration.class));
 	}
+	
 }

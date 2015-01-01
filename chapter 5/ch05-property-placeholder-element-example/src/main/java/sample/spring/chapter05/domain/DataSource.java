@@ -1,6 +1,7 @@
 package sample.spring.chapter05.domain;
 
 public class DataSource {
+	
 	private String url;
 	private String username;
 	private String password;
@@ -44,4 +45,5 @@ public class DataSource {
 				+ ", password=" + password + ", driverClass=" + driverClass
 				+ "]";
 	}
+	
 }

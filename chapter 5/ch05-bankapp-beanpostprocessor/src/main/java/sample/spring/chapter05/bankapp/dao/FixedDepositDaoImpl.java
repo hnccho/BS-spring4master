@@ -6,6 +6,7 @@ import sample.spring.chapter05.bankapp.common.InstanceValidator;
 import sample.spring.chapter05.bankapp.domain.FixedDepositDetails;
 
 public class FixedDepositDaoImpl implements FixedDepositDao, InstanceValidator {
+
 	private static Logger logger = Logger.getLogger(FixedDepositDaoImpl.class);
 	private DatabaseConnection connection;
 
@@ -14,12 +15,12 @@ public class FixedDepositDaoImpl implements FixedDepositDao, InstanceValidator {
 	}
 
 	public void initializeDbConnection() {
-		logger.info("FixedDepositDaoImpl’s initializeDbConnection method invoked");
+		logger.info("FixedDepositDaoImpl's initializeDbConnection method invoked");
 		connection = DatabaseConnection.getInstance();
 	}
 
 	public boolean createFixedDeposit(FixedDepositDetails fdd) {
-		logger.info("FixedDepositDaoImpl’s createFixedDeposit method invoked");
+		logger.info("FixedDepositDaoImpl's createFixedDeposit method invoked");
 		// -- save the fixed deposits and then return true
 		return true;
 	}
@@ -36,4 +37,5 @@ public class FixedDepositDaoImpl implements FixedDepositDao, InstanceValidator {
 			logger.error("Failed to obtain DatabaseConnection instance");
 		}
 	}
+	
 }
