@@ -8,8 +8,8 @@ import sample.spring.chapter04.bankapp.dao.CustomerRequestDao;
 import sample.spring.chapter04.bankapp.domain.CustomerRequestDetails;
 
 public class CustomerRequestServiceImpl implements CustomerRequestService {
-	private static Logger logger = Logger
-			.getLogger(CustomerRequestServiceImpl.class);
+	
+	private static Logger logger = Logger.getLogger(CustomerRequestServiceImpl.class);
 	private CustomerRequestDao customerRequestDao;
 
 	@ConstructorProperties({ "customerRequestDao" })
@@ -30,4 +30,5 @@ public class CustomerRequestServiceImpl implements CustomerRequestService {
 		customerRequestDetails.setDescription(requestDescription);
 		customerRequestDao.submitRequest(customerRequestDetails);
 	}
+	
 }

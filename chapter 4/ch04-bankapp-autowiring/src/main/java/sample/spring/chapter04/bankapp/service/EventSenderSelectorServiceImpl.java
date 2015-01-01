@@ -15,12 +15,12 @@ public class EventSenderSelectorServiceImpl {
 		OutputStream os = new FileOutputStream(resource.getFile());
 
 		Properties properties = new Properties();
-		properties
-				.setProperty(Constants.EVENT_SENDER_CLASS_PROPERTY,
-						"sample.spring.chapter04.bankapp.event.DatabaseEventSender");
+		properties.setProperty(Constants.EVENT_SENDER_CLASS_PROPERTY,
+				"sample.spring.chapter04.bankapp.event.DatabaseEventSender");
 		properties.store(os, null);
 		properties.list(System.out);
 		os.flush();
 		os.close();
 	}
+	
 }

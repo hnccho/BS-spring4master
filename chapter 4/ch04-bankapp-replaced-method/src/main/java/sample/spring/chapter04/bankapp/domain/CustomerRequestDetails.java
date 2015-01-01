@@ -5,7 +5,9 @@ import java.util.Date;
 import org.apache.log4j.Logger;
 
 public class CustomerRequestDetails {
+	
 	private static Logger logger = Logger.getLogger(CustomerRequestDetails.class);
+
 	private String type;
 	private String description;
 	private String category;
@@ -73,4 +75,5 @@ public class CustomerRequestDetails {
 	public void setResolutionTimeInDays(String resolutionTimeInDays) {
 		this.resolutionTimeInDays = resolutionTimeInDays;
 	}
+	
 }

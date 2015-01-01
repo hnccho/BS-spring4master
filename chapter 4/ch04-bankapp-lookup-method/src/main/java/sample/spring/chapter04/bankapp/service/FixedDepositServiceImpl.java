@@ -15,8 +15,8 @@ import sample.spring.chapter04.bankapp.event.EventSender;
 import sample.spring.chapter04.bankapp.event.FixedDepositCreatedEvent;
 
 public class FixedDepositServiceImpl implements FixedDepositService {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositServiceImpl.class);
+	
+	private static Logger logger = Logger.getLogger(FixedDepositServiceImpl.class);
 
 	private FixedDepositDao fixedDepositDao;
 	private EventSender eventSender;
@@ -30,15 +30,12 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 			InputStream inStream = configProperties.getInputStream();
 			Properties properties = new Properties();
 			properties.load(inStream);
-			String eventSenderClassString = properties
-					.getProperty(Constants.EVENT_SENDER_CLASS_PROPERTY);
+			String eventSenderClassString = properties.getProperty(Constants.EVENT_SENDER_CLASS_PROPERTY);
 
 			if (eventSenderClassString != null) {
-				Class<?> eventSenderClass = Class
-						.forName(eventSenderClassString);
+				Class<?> eventSenderClass = Class.forName(eventSenderClassString);
 				eventSender = (EventSender) eventSenderClass.newInstance();
 				logger.info("Created EventSender class");
-
 			} else {
 				logger.info("appConfig.properties file doesn't contain the information about EventSender class");
 			}
@@ -64,4 +61,5 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 			eventSender.sendEvent(event);
 		}
 	}
+	
 }

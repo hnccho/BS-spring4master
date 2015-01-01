@@ -4,8 +4,9 @@ import org.apache.log4j.Logger;
 
 @SuppressWarnings("unused")
 public class CustomerRegistrationDetails {
-	private static Logger logger = Logger
-			.getLogger(CustomerRegistrationDetails.class);
+
+	private static Logger logger = Logger.getLogger(CustomerRegistrationDetails.class);
+	
 	private String accountNumber;
 	private String address;
 	private String cardNumber;
@@ -29,4 +30,5 @@ public class CustomerRegistrationDetails {
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
+	
 }

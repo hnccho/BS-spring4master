@@ -4,6 +4,7 @@ import sample.spring.chapter04.bankapp.dao.FixedDepositDao;
 import sample.spring.chapter04.bankapp.domain.FixedDepositDetails;
 
 public class FixedDepositServiceImpl implements FixedDepositService {
+
 	private FixedDepositDao myFixedDepositDao;
 
 	public void setMyFixedDepositDao(FixedDepositDao myFixedDepositDao) {
@@ -15,4 +16,5 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 		// -- create fixed deposit
 		myFixedDepositDao.createFixedDeposit(fdd);
 	}
+	
 }

@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 	<bean id="service"
 		class="sample.spring.chapter04.bankapp.service.FixedDepositServiceImpl">
 		<property name="fixedDepositDao">
 			<bean class="sample.spring.chapter04.bankapp.dao.FixedDepositDaoImpl" />
 		</property>
-		<constructor-arg index="0"
-			value="META-INF/config/appConfig.properties" />
+		<constructor-arg index="0" value="META-INF/config/appConfig.properties" />
 	</bean>
 
 	<bean id="eventSenderSelectorService"
 		class="sample.spring.chapter04.bankapp.service.EventSenderSelectorServiceImpl">
-		<constructor-arg index="0"
-			value="META-INF/config/appConfig.properties" />
+		<constructor-arg index="0" value="META-INF/config/appConfig.properties" />
 	</bean>
 
 	<bean id="customerRequestService"
@@ -44,4 +43,5 @@
 
 	<bean id="customerRegistrationDao"
 		class="sample.spring.chapter04.bankapp.dao.CustomerRegistrationDaoImpl" />
+
 </beans>

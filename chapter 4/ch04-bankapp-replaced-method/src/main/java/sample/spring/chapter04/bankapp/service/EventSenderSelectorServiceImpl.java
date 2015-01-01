@@ -11,6 +11,7 @@ import sample.spring.chapter04.bankapp.Constants;
 public class EventSenderSelectorServiceImpl {
 
 	public EventSenderSelectorServiceImpl(String configFile) throws Exception {
+		
 		ClassPathResource resource = new ClassPathResource(configFile);
 		OutputStream os = new FileOutputStream(resource.getFile());
 
@@ -23,4 +24,5 @@ public class EventSenderSelectorServiceImpl {
 		os.flush();
 		os.close();
 	}
+	
 }

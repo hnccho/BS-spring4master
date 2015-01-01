@@ -9,8 +9,8 @@ import sample.spring.chapter04.bankapp.domain.CustomerRequestDetails;
 
 @SuppressWarnings("unused")
 public class CustomerRequestServiceImpl implements CustomerRequestService {
-	private static Logger logger = Logger
-			.getLogger(CustomerRequestServiceImpl.class);
+
+	private static Logger logger = Logger.getLogger(CustomerRequestServiceImpl.class);
 	private CustomerRequestDetails customerRequestDetails;
 	private CustomerRequestDao customerRequestDao;
 
@@ -18,6 +18,7 @@ public class CustomerRequestServiceImpl implements CustomerRequestService {
 	public CustomerRequestServiceImpl(
 			CustomerRequestDetails customerRequestDetails,
 			CustomerRequestDao customerRequestDao) {
+
 		logger.info("Created CustomerRequestServiceImpl instance");
 		this.customerRequestDetails = customerRequestDetails;
 		this.customerRequestDao = customerRequestDao;

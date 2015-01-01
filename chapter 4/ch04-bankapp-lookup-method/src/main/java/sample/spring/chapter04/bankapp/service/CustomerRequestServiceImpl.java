@@ -7,10 +7,9 @@ import org.apache.log4j.Logger;
 import sample.spring.chapter04.bankapp.dao.CustomerRequestDao;
 import sample.spring.chapter04.bankapp.domain.CustomerRequestDetails;
 
-public abstract class CustomerRequestServiceImpl implements
-		CustomerRequestService {
-	private static Logger logger = Logger
-			.getLogger(CustomerRequestServiceImpl.class);
+public abstract class CustomerRequestServiceImpl implements	CustomerRequestService {
+
+	private static Logger logger = Logger.getLogger(CustomerRequestServiceImpl.class);
 	private CustomerRequestDao customerRequestDao;
 
 	@ConstructorProperties({ "customerRequestDao" })
@@ -29,4 +28,5 @@ public abstract class CustomerRequestServiceImpl implements
 		customerRequestDetails.setDescription(requestDescription);
 		customerRequestDao.submitRequest(customerRequestDetails);
 	}
+	
 }
