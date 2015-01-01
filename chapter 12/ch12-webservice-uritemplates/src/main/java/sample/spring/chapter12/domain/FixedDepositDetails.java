@@ -1,12 +1,10 @@
 package sample.spring.chapter12.domain;
 
 public class FixedDepositDetails {
+
 	private long id;
-
 	private String depositAmount;
-
 	private String tenure;
-
 	private String email;
 
 	public FixedDepositDetails() {
@@ -56,4 +54,5 @@ public class FixedDepositDetails {
 		return "id :" + id + ", deposit amount : " + depositAmount
 				+ ", tenure : " + tenure + ", email : " + email;
 	}
+	
 }

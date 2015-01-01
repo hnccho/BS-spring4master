@@ -21,6 +21,7 @@ public class FixedDepositWSClient {
 	public static void main(String args[]) {
 		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
+		
 		getFixedDepositList(context.getBean(RestTemplate.class));
 		getFixedDeposit(context.getBean(RestTemplate.class));
 		openFixedDeposit(context.getBean(RestTemplate.class));
@@ -34,66 +35,66 @@ public class FixedDepositWSClient {
 	}
 
 	private static void getFixedDepositList(RestTemplate restTemplate) {
+
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", "application/json");
 
 		HttpEntity<String> requestEntity = new HttpEntity<String>(headers);
 
-		ParameterizedTypeReference<List<FixedDepositDetails>> typeRef = new ParameterizedTypeReference<List<FixedDepositDetails>>() {
-		};
+		ParameterizedTypeReference<List<FixedDepositDetails>> typeRef 
+			= new ParameterizedTypeReference<List<FixedDepositDetails>>() { };
 
-		ResponseEntity<List<FixedDepositDetails>> responseEntity = restTemplate
-				.exchange(
-						"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits",
-						HttpMethod.GET, requestEntity, typeRef);
-		List<FixedDepositDetails> fixedDepositDetails = responseEntity
-				.getBody();
+		ResponseEntity<List<FixedDepositDetails>> responseEntity 
+			= restTemplate.exchange(
+					"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits",
+					HttpMethod.GET, requestEntity, typeRef);
+		List<FixedDepositDetails> fixedDepositDetails = responseEntity.getBody();
 		logger.info("List of fixed deposit details: \n" + fixedDepositDetails);
 	}
 
 	private static void getFixedDeposit(RestTemplate restTemplate) {
-		ResponseEntity<FixedDepositDetails> responseEntity = restTemplate
-				.getForEntity(
-						"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits/1",
-						FixedDepositDetails.class);
+		ResponseEntity<FixedDepositDetails> responseEntity 
+			= restTemplate.getForEntity(
+					"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits/1",
+					FixedDepositDetails.class);
 		FixedDepositDetails fixedDepositDetails = responseEntity.getBody();
-		logger.info("Fixed deposit details for id = 1: \n"
-				+ fixedDepositDetails);
+		logger.info("Fixed deposit details for id = 1: \n" + fixedDepositDetails);
 	}
 
 	private static void openFixedDeposit(RestTemplate restTemplate) {
+		
 		FixedDepositDetails fdd = new FixedDepositDetails();
 		fdd.setDepositAmount("9999");
 		fdd.setEmail("99@somedomain.com");
 		fdd.setTenure("12");
 
-		ResponseEntity<FixedDepositDetails> responseEntity = restTemplate
-				.postForEntity(
-						"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits",
-						fdd, FixedDepositDetails.class);
+		ResponseEntity<FixedDepositDetails> responseEntity 
+			= restTemplate.postForEntity(
+					"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits",
+					fdd, FixedDepositDetails.class);
 
 		FixedDepositDetails fixedDepositDetails = responseEntity.getBody();
-		logger.info("Details of the newly created fixed deposit: "
-				+ fixedDepositDetails);
+		logger.info("Details of the newly created fixed deposit: " + fixedDepositDetails);
 	}
 
 	private static void openInvalidFixedDeposit(RestTemplate restTemplate) {
+		
 		FixedDepositDetails fdd = new FixedDepositDetails();
 		fdd.setDepositAmount("100");
 		fdd.setEmail("99@somedomain.com");
 		fdd.setTenure("12");
 
-		ResponseEntity<FixedDepositDetails> responseEntity = restTemplate
-				.postForEntity(
-						"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits",
-						fdd, FixedDepositDetails.class);
+		ResponseEntity<FixedDepositDetails> responseEntity 
+			= restTemplate.postForEntity(
+					"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits",
+					fdd, FixedDepositDetails.class);
 
 		FixedDepositDetails fixedDepositDetails = responseEntity.getBody();
-		logger.info("Details of the newly created fixed deposit: "
-				+ fixedDepositDetails);
+		logger.info("Details of the newly created fixed deposit: " + fixedDepositDetails);
 	}
 
 	private static void editFixedDeposit(RestTemplate restTemplate) {
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", "application/json");
 
@@ -102,30 +103,32 @@ public class FixedDepositWSClient {
 		fdd.setEmail("99@somedomain.com");
 		fdd.setTenure("12");
 
-		HttpEntity<FixedDepositDetails> requestEntity = new HttpEntity<FixedDepositDetails>(
-				fdd, headers);
+		HttpEntity<FixedDepositDetails> requestEntity = new HttpEntity<FixedDepositDetails>(fdd, headers);
 
-		ResponseEntity<FixedDepositDetails> responseEntity = restTemplate
-				.exchange(
-						"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits/2",
-						HttpMethod.PUT, requestEntity,
-						FixedDepositDetails.class);
+		ResponseEntity<FixedDepositDetails> responseEntity 
+			= restTemplate.exchange(
+					"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits/2",
+					HttpMethod.PUT, requestEntity,
+					FixedDepositDetails.class);
+		
 		FixedDepositDetails fixedDepositDetails = responseEntity.getBody();
 		logger.info("Modified fixed deposit details : " + fixedDepositDetails);
 	}
 
 	private static void closeFixedDeposit(RestTemplate restTemplate) {
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Accept", "text/plain");
 
-		HttpEntity<FixedDepositDetails> requestEntity = new HttpEntity<FixedDepositDetails>(
-				headers);
+		HttpEntity<FixedDepositDetails> requestEntity = new HttpEntity<FixedDepositDetails>(headers);
 
-		ResponseEntity<String> responseEntity = restTemplate
-				.exchange(
-						"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits/3",
-						HttpMethod.DELETE, requestEntity, String.class);
+		ResponseEntity<String> responseEntity 
+			= restTemplate.exchange(
+					"http://localhost:8080/ch12-webservice-uritemplates/fixedDeposits/3",
+					HttpMethod.DELETE, requestEntity, String.class);
+		
 		logger.info("HTTP status code : " + responseEntity.getStatusCode()
 				+ ". Response body: " + responseEntity.getBody());
 	}
+	
 }

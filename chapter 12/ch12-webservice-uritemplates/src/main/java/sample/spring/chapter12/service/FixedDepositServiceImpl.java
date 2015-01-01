@@ -10,6 +10,7 @@ import sample.spring.chapter12.domain.FixedDepositDetails;
 
 @Service
 public class FixedDepositServiceImpl implements FixedDepositService {
+	
 	@Autowired
 	private FixedDepositDao fixedDepositDao;
 
@@ -37,4 +38,5 @@ public class FixedDepositServiceImpl implements FixedDepositService {
 	public void editFixedDeposit(FixedDepositDetails fixedDepositDetails) {
 		fixedDepositDao.editFixedDeposit(fixedDepositDetails);
 	}
+	
 }

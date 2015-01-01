@@ -24,8 +24,8 @@ import sample.spring.chapter12.service.FixedDepositService;
 @Controller
 @RequestMapping(value = "/fixedDeposits")
 public class FixedDepositController {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositController.class);
+	
+	private static Logger logger = Logger.getLogger(FixedDepositController.class);
 	
 	@Autowired
 	private FixedDepositService fixedDepositService;
@@ -40,8 +40,8 @@ public class FixedDepositController {
 	@RequestMapping(method = RequestMethod.GET, params = "id")
 	public ResponseEntity<FixedDepositDetails> getFixedDeposit(
 			@RequestParam("id") int id) {
-		logger.info("getFixedDeposit() method: Getting fixed deposit with id "
-				+ id);
+	
+		logger.info("getFixedDeposit() method: Getting fixed deposit with id " + id);
 		return new ResponseEntity<FixedDepositDetails>(
 				fixedDepositService.getFixedDeposit(id), HttpStatus.OK);
 	}
@@ -51,37 +51,32 @@ public class FixedDepositController {
 			@RequestBody FixedDepositDetails fixedDepositDetails,
 			BindingResult bindingResult) {
 
-		new FixedDepositDetailsValidator().validate(fixedDepositDetails,
-				bindingResult);
-
+		new FixedDepositDetailsValidator().validate(fixedDepositDetails, bindingResult);
 		if (bindingResult.hasErrors()) {
 			logger.info("openFixedDeposit() method: Validation errors occurred");
 			throw new ValidationException("Validation errors occurred");
 		} else {
 			fixedDepositService.saveFixedDeposit(fixedDepositDetails);
 			logger.info("openFixedDeposit() method: Fixed deposit details successfully saved.");
-			return new ResponseEntity<FixedDepositDetails>(fixedDepositDetails,
-					HttpStatus.CREATED);
+			return new ResponseEntity<FixedDepositDetails>(fixedDepositDetails,	HttpStatus.CREATED);
 		}
 	}
 
 	@RequestMapping(method = RequestMethod.PUT)
 	public ResponseEntity<FixedDepositDetails> editFixedDeposit(
 			@RequestBody FixedDepositDetails fixedDepositDetails,
-			@RequestParam("id") int fixedDepositId, BindingResult bindingResult) {
+			@RequestParam("id") int fixedDepositId, 
+			BindingResult bindingResult) {
 
 		fixedDepositDetails.setId(fixedDepositId);
-		new FixedDepositDetailsValidator().validate(fixedDepositDetails,
-				bindingResult);
-
+		new FixedDepositDetailsValidator().validate(fixedDepositDetails, bindingResult);
 		if (bindingResult.hasErrors()) {
 			logger.info("editFixedDeposit() method: Validation errors occurred");
 			throw new ValidationException("Validation errors occurred");
 		} else {
 			fixedDepositService.editFixedDeposit(fixedDepositDetails);
 			logger.info("editFixedDeposit() method: Fixed deposit details successfully changed.");
-			return new ResponseEntity<FixedDepositDetails>(fixedDepositDetails,
-					HttpStatus.OK);
+			return new ResponseEntity<FixedDepositDetails>(fixedDepositDetails,	HttpStatus.OK);
 		}
 	}
 
@@ -89,6 +84,7 @@ public class FixedDepositController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public HttpEntity<String> closeFixedDeposit(
 			@RequestParam(value = "id") int fdId) {
+		
 		fixedDepositService.closeFixedDeposit(fdId);
 		logger.info("closeFixedDeposit() method: Fixed deposit successfully closed.");
 		return new HttpEntity<String>("Successfully deleted the fixed deposit");
@@ -101,4 +97,5 @@ public class FixedDepositController {
 		logger.info("handling ValidationException " + ex.getMessage());
 		return ex.getMessage();
 	}
+	
 }
