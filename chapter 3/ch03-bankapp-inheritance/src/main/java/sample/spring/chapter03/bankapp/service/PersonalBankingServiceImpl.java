@@ -15,4 +15,5 @@ public class PersonalBankingServiceImpl implements PersonalBankingService {
 	public BankStatement getMiniStatement() {
 		return personalBakingDao.getMiniStatement();
 	}
+	
 }

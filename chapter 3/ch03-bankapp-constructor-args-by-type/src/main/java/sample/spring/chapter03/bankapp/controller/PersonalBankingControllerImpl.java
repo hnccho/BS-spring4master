@@ -7,8 +7,7 @@ public class PersonalBankingControllerImpl implements PersonalBankingController 
 
 	private PersonalBankingService personalBankingService;
 
-	public void setPersonalBankingService(
-			PersonalBankingService personalBankingService) {
+	public void setPersonalBankingService(PersonalBankingService personalBankingService) {
 		this.personalBankingService = personalBankingService;
 	}
 

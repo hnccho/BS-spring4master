@@ -1,6 +1,7 @@
 package sample.spring.chapter03.bankapp.base;
 
 public class ServiceTemplate {
+	
 	private JmsMessageSender jmsMessageSender;
 	private EmailMessageSender emailMessageSender;
 	private WebServiceInvoker webServiceInvoker;
@@ -28,4 +29,5 @@ public class ServiceTemplate {
 	public void setWebServiceInvoker(WebServiceInvoker webServiceInvoker) {
 		this.webServiceInvoker = webServiceInvoker;
 	}
+	
 }

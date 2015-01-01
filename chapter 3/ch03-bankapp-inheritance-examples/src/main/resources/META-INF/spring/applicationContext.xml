@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
 	<bean id="daoTemplate" abstract="true">
 		<property name="databaseOperations" ref="databaseOperations" />
 	</bean>
 
-	<bean id="databaseOperations"
-		class="sample.spring.chapter03.bankapp.utils.DatabaseOperations" />
+	<bean id="databaseOperations" class="sample.spring.chapter03.bankapp.utils.DatabaseOperations" />
 
-	<bean id="serviceTemplate"
-		class="sample.spring.chapter03.bankapp.base.ServiceTemplate">
+	<bean id="serviceTemplate" class="sample.spring.chapter03.bankapp.base.ServiceTemplate">
 		<property name="jmsMessageSender" ref="jmsMessageSender" />
 		<property name="emailMessageSender" ref="emailMessageSender" />
 		<property name="webServiceInvoker" ref="webServiceInvoker" />
 	</bean>
 
-	<bean id="jmsMessageSender"
-		class="sample.spring.chapter03.bankapp.base.JmsMessageSender" />
-	<bean id="emailMessageSender"
-		class="sample.spring.chapter03.bankapp.base.EmailMessageSender" />
-	<bean id="webServiceInvoker"
-		class="sample.spring.chapter03.bankapp.base.WebServiceInvoker" />
+	<bean id="jmsMessageSender"	class="sample.spring.chapter03.bankapp.base.JmsMessageSender" />
+	<bean id="emailMessageSender" class="sample.spring.chapter03.bankapp.base.EmailMessageSender" />
+	<bean id="webServiceInvoker" class="sample.spring.chapter03.bankapp.base.WebServiceInvoker" />
 
-	<bean id="controllerFactory"
-		class="sample.spring.chapter03.bankapp.controller.ControllerFactory" />
+	<bean id="controllerFactory" class="sample.spring.chapter03.bankapp.controller.ControllerFactory" />
 
 	<bean id="controllerTemplate" factory-bean="controllerFactory"
 		factory-method="getController" abstract="true">
@@ -67,4 +62,5 @@
 		class="sample.spring.chapter03.bankapp.controller.UserRequestControllerImpl">
 		<property name="serviceTemplate" ref="serviceTemplate" />
 	</bean>
+	
 </beans>

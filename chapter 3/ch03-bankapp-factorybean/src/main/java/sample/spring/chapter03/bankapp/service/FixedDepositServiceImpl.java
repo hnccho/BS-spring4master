@@ -9,6 +9,7 @@ import sample.spring.chapter03.bankapp.event.EventSender;
 import sample.spring.chapter03.bankapp.event.FixedDepositCreatedEvent;
 
 public class FixedDepositServiceImpl implements FixedDepositService {
+
 	private FixedDepositDao fixedDepositDao;
 	private EventSender eventSender;
 	

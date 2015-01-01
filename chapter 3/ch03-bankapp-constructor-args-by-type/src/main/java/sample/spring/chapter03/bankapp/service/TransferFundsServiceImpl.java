@@ -4,16 +4,16 @@ import org.apache.log4j.Logger;
 
 @SuppressWarnings("unused")
 public class TransferFundsServiceImpl implements TransferFundsService {
-	private static Logger logger = Logger
-			.getLogger(TransferFundsServiceImpl.class);
+	
+	private static Logger logger = Logger.getLogger(TransferFundsServiceImpl.class);
 
 	private String webServiceUrl;
 	private boolean active;
 	private long timeout;
 	private int numberOfRetrialAttempts;
 
-	public TransferFundsServiceImpl(String webServiceUrl, boolean active, long timeout,
-			int numberOfRetrialAttempts) {
+	public TransferFundsServiceImpl(String webServiceUrl, boolean active, long timeout,	int numberOfRetrialAttempts) {
+		
 		this.webServiceUrl = webServiceUrl;
 		this.active = active;
 		this.timeout = timeout;
@@ -27,4 +27,5 @@ public class TransferFundsServiceImpl implements TransferFundsService {
 	public void transferFunds() {
 
 	}
+	
 }

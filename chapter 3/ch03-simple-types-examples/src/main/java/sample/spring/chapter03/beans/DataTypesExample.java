@@ -11,6 +11,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 public class DataTypesExample {
+	
 	private static Logger logger = Logger.getLogger(DataTypesExample.class);
 
 	@SuppressWarnings("rawtypes")
@@ -23,6 +24,7 @@ public class DataTypesExample {
 			boolean booleanType, Date dateType, long longType,
 			double doubleType, Properties propertiesType, List<Integer> listType,
 			Map mapType, Set setType, Properties anotherPropertiesType) {
+		
 		logger.info("byteArrayType " + new String(byteArrayType));
 		logger.info("charType " + charType);
 		logger.info("charArray " + new String(charArray));
@@ -38,4 +40,5 @@ public class DataTypesExample {
 		logger.info("setType " + setType);
 		logger.info("anotherPropertiesType " + anotherPropertiesType);
 	}
+	
 }

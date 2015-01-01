@@ -6,6 +6,7 @@ import java.util.Set;
 
 @SuppressWarnings("rawtypes")
 public class CollectionTypesExample {
+	
 	private List listType;
 	private Set setType;
 	private Map mapType;
@@ -40,4 +41,5 @@ public class CollectionTypesExample {
 				+ ", setType=" + setType.getClass() + ", mapType ="
 				+ mapType.getClass() + "]";
 	}
+	
 }

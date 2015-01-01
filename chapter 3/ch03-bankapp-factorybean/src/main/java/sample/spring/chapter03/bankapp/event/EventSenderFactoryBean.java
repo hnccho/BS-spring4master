@@ -7,6 +7,7 @@ import org.springframework.beans.factory.FactoryBean;
 import org.springframework.core.io.ClassPathResource;
 
 public class EventSenderFactoryBean implements FactoryBean<EventSender> {
+
 	private String databasePropertiesFile;
 	private String webServicePropertiesFile;
 	private String messagingPropertiesFile;
@@ -25,6 +26,7 @@ public class EventSenderFactoryBean implements FactoryBean<EventSender> {
 
 	@Override
 	public EventSender getObject() throws Exception {
+
 		System.out.println("getObject invoked");
 		EventSender eventSender = null;
 		Properties properties = new Properties();
@@ -37,8 +39,7 @@ public class EventSenderFactoryBean implements FactoryBean<EventSender> {
 			databaseProperties = new ClassPathResource(databasePropertiesFile);
 		}
 		if (webServicePropertiesFile != null) {
-			webServiceProperties = new ClassPathResource(
-					webServicePropertiesFile);
+			webServiceProperties = new ClassPathResource(webServicePropertiesFile);
 		}
 		if (messagingPropertiesFile != null) {
 			messagingProperties = new ClassPathResource(messagingPropertiesFile);

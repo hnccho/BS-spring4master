@@ -16,4 +16,5 @@ public class PersonalBankingServiceImpl extends ServiceTemplate implements Perso
 	public BankStatement getMiniStatement() {
 		return personalBakingDao.getMiniStatement();
 	}
+	
 }

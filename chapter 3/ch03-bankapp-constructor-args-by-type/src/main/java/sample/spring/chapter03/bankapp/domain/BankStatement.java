@@ -3,6 +3,7 @@ package sample.spring.chapter03.bankapp.domain;
 import java.util.Date;
 
 public class BankStatement {
+
 	private Date transactionDate;
 	private double amount;
 	private String transactionType;
@@ -50,4 +51,5 @@ public class BankStatement {
 				+ " , Transaction Type = " + this.getTransactionType()
 				+ " , Transaction Date = " + this.getTransactionDate();
 	}
+	
 }

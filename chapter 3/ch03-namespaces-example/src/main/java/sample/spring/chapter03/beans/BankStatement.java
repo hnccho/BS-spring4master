@@ -4,15 +4,14 @@ import java.beans.ConstructorProperties;
 import java.util.Date;
 
 public class BankStatement {
+	
 	private Date transactionDate;
 	private double amount;
 	private String transactionType;
 	private String referenceNumber;
 
-	@ConstructorProperties({ "transactionDate", "amount", "transactionType",
-			"referenceNumber" })
-	public BankStatement(Date transactionDate, double amount,
-			String transactionType, String referenceNumber) {
+	@ConstructorProperties({ "transactionDate", "amount", "transactionType", "referenceNumber" })
+	public BankStatement(Date transactionDate, double amount, String transactionType, String referenceNumber) {
 		this.transactionDate = transactionDate;
 		this.amount = amount;
 		this.transactionType = transactionType;
@@ -25,4 +24,5 @@ public class BankStatement {
 				+ ", amount=" + amount + ", transactionType=" + transactionType
 				+ ", referenceNumber=" + referenceNumber + "]";
 	}
+	
 }

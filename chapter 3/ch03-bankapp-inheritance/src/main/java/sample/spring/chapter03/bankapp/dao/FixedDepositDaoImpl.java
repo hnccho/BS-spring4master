@@ -6,6 +6,7 @@ import sample.spring.chapter03.bankapp.domain.FixedDepositDetails;
 import sample.spring.chapter03.bankapp.utils.DatabaseOperations;
 
 public class FixedDepositDaoImpl implements FixedDepositDao {
+
 	private static Logger logger = Logger.getLogger(FixedDepositDaoImpl.class);
 	private DatabaseOperations databaseOperations;
 	
@@ -24,4 +25,5 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 	public boolean createFixedDeposit(FixedDepositDetails fdd) {
 		return databaseOperations.saveFd(fdd);
 	}
+	
 }

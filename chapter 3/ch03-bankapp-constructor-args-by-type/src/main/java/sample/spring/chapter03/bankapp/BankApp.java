@@ -11,6 +11,7 @@ import sample.spring.chapter03.bankapp.domain.FixedDepositDetails;
 import sample.spring.chapter03.bankapp.domain.Request;
 
 public class BankApp {
+	
 	private static Logger logger = Logger.getLogger(BankApp.class);
 	private static ApplicationContext context;
 
@@ -18,21 +19,22 @@ public class BankApp {
 		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 
-		FixedDepositController fixedDepositController = context
-				.getBean(FixedDepositController.class);
-		fixedDepositController.submit(context
-				.getBean(FixedDepositDetails.class).setDepositAmount(100)
-				.setEmail("someemail@somedomain.com").setId(1).setTenure(10));
-		logger.info("Your fixed deposit details : "
-				+ fixedDepositController.get());
+		FixedDepositController fixedDepositController = context.getBean(FixedDepositController.class);
+		fixedDepositController.submit(
+				context.getBean(FixedDepositDetails.class)
+				.setDepositAmount(100)
+				.setEmail("someemail@somedomain.com")
+				.setId(1)
+				.setTenure(10)
+		);
+		logger.info("Your fixed deposit details : "	+ fixedDepositController.get());
 
-		PersonalBankingController personalBankingController = context
-				.getBean(PersonalBankingController.class);
+		PersonalBankingController personalBankingController = context.getBean(PersonalBankingController.class);
 		logger.info(personalBankingController.getMiniStatement());
 
-		UserRequestController userRequestController = context
-				.getBean(UserRequestController.class);
+		UserRequestController userRequestController = context.getBean(UserRequestController.class);
 		userRequestController.submitRequest(new Request());
 		logger.info("Submitted user request");
 	}
+	
 }

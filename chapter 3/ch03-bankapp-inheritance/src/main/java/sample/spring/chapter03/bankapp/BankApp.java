@@ -9,6 +9,7 @@ import sample.spring.chapter03.bankapp.controller.PersonalBankingController;
 import sample.spring.chapter03.bankapp.domain.FixedDepositDetails;
 
 public class BankApp {
+	
 	private static Logger logger = Logger.getLogger(BankApp.class);
 	private static ApplicationContext context;
 
@@ -16,16 +17,18 @@ public class BankApp {
 		context = new ClassPathXmlApplicationContext(
 				"classpath:META-INF/spring/applicationContext.xml");
 
-		FixedDepositController fixedDepositController = context
-				.getBean(FixedDepositController.class);
-		fixedDepositController.submit(context
-				.getBean(FixedDepositDetails.class).setDepositAmount(100)
-				.setEmail("someemail@somedomain.com").setId(1).setTenure(10));
+		FixedDepositController fixedDepositController = context.getBean(FixedDepositController.class);
+		fixedDepositController.submit(
+				context.getBean(FixedDepositDetails.class)
+				.setDepositAmount(100)
+				.setEmail("someemail@somedomain.com")
+				.setId(1)
+				.setTenure(10)
+		);
 		logger.info("Your fixed deposit details : " + fixedDepositController.get());
 
-		PersonalBankingController personalBankingController = context
-				.getBean(PersonalBankingController.class);
+		PersonalBankingController personalBankingController = context.getBean(PersonalBankingController.class);
 		logger.info(personalBankingController.getMiniStatement());
-		
 	}
+
 }

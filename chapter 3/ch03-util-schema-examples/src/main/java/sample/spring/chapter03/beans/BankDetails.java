@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class BankDetails {
+	
 	private String bankName;
 	private byte[] bankPrimaryBusiness;
 	private char[] headOfficeAddress;
@@ -78,4 +79,5 @@ public class BankDetails {
 				+ ", privateBank=" + privateBank + ", branchAddresses="
 				+ branchAddresses + "]";
 	}
+	
 }

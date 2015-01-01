@@ -6,6 +6,7 @@ import sample.spring.chapter03.bankapp.domain.FixedDepositDetails;
 import sample.spring.chapter03.bankapp.service.FixedDepositService;
 
 public class FixedDepositControllerImpl implements FixedDepositController {
+
 	private static Logger logger = Logger.getLogger(FixedDepositControllerImpl.class);
 	
 	private FixedDepositService fixedDepositService;
@@ -30,4 +31,5 @@ public class FixedDepositControllerImpl implements FixedDepositController {
 	public FixedDepositDetails get() {
 		return fixedDepositService.getFixedDepositDetails(1L);
 	}
+	
 }

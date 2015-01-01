@@ -3,6 +3,7 @@ package sample.spring.chapter03.bankapp.domain;
 import org.apache.log4j.Logger;
 
 public class FixedDepositDetails {
+
 	private static Logger logger = Logger.getLogger(FixedDepositDetails.class);
 	
 	private long id;
@@ -54,4 +55,5 @@ public class FixedDepositDetails {
 		return "id :" + id + ", deposit amount : " + depositAmount
 				+ ", tenure : " + tenure + ", email : " + email;
 	}
+	
 }

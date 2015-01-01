@@ -14,4 +14,5 @@ public class MyPropertyRegistrar implements PropertyEditorRegistrar {
 		registry.registerCustomEditor(Date.class, new CustomDateEditor(
 				new SimpleDateFormat("dd-MM-yyyy"), false));
 	}
+	
 }

@@ -3,6 +3,7 @@ package sample.spring.chapter03.bankapp.event;
 import java.util.Map;
 
 public class FixedDepositCreatedEvent implements Event {
+
 	private Map<String, Object> eventData;
 
 	@Override
@@ -19,4 +20,5 @@ public class FixedDepositCreatedEvent implements Event {
 	public Map<String, Object> getEventData() {
 		return eventData;
 	}
+	
 }

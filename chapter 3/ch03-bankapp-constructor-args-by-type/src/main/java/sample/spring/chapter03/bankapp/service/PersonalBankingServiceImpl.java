@@ -7,14 +7,15 @@ import sample.spring.chapter03.bankapp.base.WebServiceInvoker;
 import sample.spring.chapter03.bankapp.dao.PersonalBakingDao;
 import sample.spring.chapter03.bankapp.domain.BankStatement;
 
-public class PersonalBankingServiceImpl extends ServiceTemplate implements
-		PersonalBankingService {
+public class PersonalBankingServiceImpl extends ServiceTemplate implements PersonalBankingService {
 
 	private PersonalBakingDao personalBakingDao;
 
-	public PersonalBankingServiceImpl(JmsMessageSender jmsMessageSender,
+	public PersonalBankingServiceImpl(
+			JmsMessageSender jmsMessageSender,
 			EmailMessageSender emailMessageSender,
 			WebServiceInvoker webServiceInvoker) {
+		
 		super(jmsMessageSender, emailMessageSender, webServiceInvoker);
 	}
 
@@ -26,4 +27,5 @@ public class PersonalBankingServiceImpl extends ServiceTemplate implements
 	public BankStatement getMiniStatement() {
 		return personalBakingDao.getMiniStatement();
 	}
+	
 }

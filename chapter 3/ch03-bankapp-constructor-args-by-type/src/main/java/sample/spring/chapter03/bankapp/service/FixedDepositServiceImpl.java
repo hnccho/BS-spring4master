@@ -10,12 +10,14 @@ import sample.spring.chapter03.bankapp.dao.FixedDepositDao;
 import sample.spring.chapter03.bankapp.domain.FixedDepositDetails;
 
 public class FixedDepositServiceImpl extends ServiceTemplate implements FixedDepositService {
-	private static Logger logger = Logger
-			.getLogger(FixedDepositServiceImpl.class);
 
-	public FixedDepositServiceImpl(JmsMessageSender jmsMessageSender,
+	private static Logger logger = Logger.getLogger(FixedDepositServiceImpl.class);
+
+	public FixedDepositServiceImpl(
+			JmsMessageSender jmsMessageSender,
 			EmailMessageSender emailMessageSender,
 			WebServiceInvoker webServiceInvoker) {
+		
 		super(jmsMessageSender, emailMessageSender, webServiceInvoker);
 	}
 
@@ -37,4 +39,5 @@ public class FixedDepositServiceImpl extends ServiceTemplate implements FixedDep
 	public boolean createFixedDeposit(FixedDepositDetails fdd) {
 		return fixedDepositDao.createFixedDeposit(fdd);
 	}
+	
 }

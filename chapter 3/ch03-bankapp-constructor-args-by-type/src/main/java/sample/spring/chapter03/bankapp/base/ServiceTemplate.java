@@ -3,15 +3,18 @@ package sample.spring.chapter03.bankapp.base;
 import org.apache.log4j.Logger;
 
 public class ServiceTemplate {
+	
 	private static Logger logger = Logger.getLogger(ServiceTemplate.class);
 
 	private JmsMessageSender jmsMessageSender;
 	private EmailMessageSender emailMessageSender;
 	private WebServiceInvoker webServiceInvoker;
 
-	public ServiceTemplate(JmsMessageSender jmsMessageSender,
+	public ServiceTemplate(
+			JmsMessageSender jmsMessageSender,
 			EmailMessageSender emailMessageSender,
 			WebServiceInvoker webServiceInvoker) {
+		
 		this.jmsMessageSender = jmsMessageSender;
 		this.emailMessageSender = emailMessageSender;
 		this.webServiceInvoker = webServiceInvoker;
@@ -44,4 +47,5 @@ public class ServiceTemplate {
 	public void setWebServiceInvoker(WebServiceInvoker webServiceInvoker) {
 		this.webServiceInvoker = webServiceInvoker;
 	}
+	
 }

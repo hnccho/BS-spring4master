@@ -4,6 +4,7 @@ import java.util.Map;
 
 @SuppressWarnings("rawtypes")
 public class Address {
+	
 	private Map addresses;
 
 	public Map getAddresses() {
