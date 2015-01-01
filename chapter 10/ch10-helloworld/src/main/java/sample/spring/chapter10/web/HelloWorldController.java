@@ -14,8 +14,10 @@ public class HelloWorldController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
+
 		Map<String, String> modelData = new HashMap<String, String>();
 		modelData.put("msg", "Hello World !!");
 		return new ModelAndView("helloworld", modelData);
 	}
+	
 }

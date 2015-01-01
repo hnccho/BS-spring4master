@@ -56,15 +56,13 @@ public class FixedDepositController {
 		if (!NumberUtils.isNumber(depositAmount)) {
 			modelData.put("error.depositAmount", "enter a valid number");
 		} else if (NumberUtils.toInt(depositAmount) < 1000) {
-			modelData.put("error.depositAmount",
-					"must be greater than or equal to 1000");
+			modelData.put("error.depositAmount", "must be greater than or equal to 1000");
 		}
 
 		if (!NumberUtils.isNumber(tenure)) {
 			modelData.put("error.tenure", "enter a valid number");
 		} else if (NumberUtils.toInt(tenure) < 12) {
-			modelData
-					.put("error.tenure", "must be greater than or equal to 12");
+			modelData.put("error.tenure", "must be greater than or equal to 12");
 		}
 
 		if (email == null || "".equalsIgnoreCase(email)) {
@@ -101,15 +99,13 @@ public class FixedDepositController {
 		if (!NumberUtils.isNumber(depositAmount)) {
 			modelData.put("error.depositAmount", "enter a valid number");
 		} else if (NumberUtils.toInt(depositAmount) < 1000) {
-			modelData.put("error.depositAmount",
-					"must be greater than or equal to 1000");
+			modelData.put("error.depositAmount", "must be greater than or equal to 1000");
 		}
 
 		if (!NumberUtils.isNumber(tenure)) {
 			modelData.put("error.tenure", "enter a valid number");
 		} else if (NumberUtils.toInt(tenure) < 12) {
-			modelData
-					.put("error.tenure", "must be greater than or equal to 12");
+			modelData.put("error.tenure", "must be greater than or equal to 12");
 		}
 
 		if (email == null || "".equalsIgnoreCase(email)) {
@@ -142,9 +138,10 @@ public class FixedDepositController {
 
 	@RequestMapping(params = "fdAction=view", method = RequestMethod.GET)
 	public ModelAndView viewFixedDepositDetails(HttpServletRequest request) {
-		FixedDepositDetails fixedDepositDetails = fixedDepositService
-				.getFixedDeposit(Integer.parseInt(request
-						.getParameter("fixedDepositId")));
+		FixedDepositDetails fixedDepositDetails 
+				= fixedDepositService.getFixedDeposit(
+				  Integer.parseInt(request.getParameter("fixedDepositId")));
+		
 		ModelMap modelMap = new ModelMap();
 		modelMap.addAttribute(fixedDepositDetails);
 		return new ModelAndView("editFixedDepositForm", modelMap);
